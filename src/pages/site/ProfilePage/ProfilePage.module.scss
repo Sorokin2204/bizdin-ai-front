@@ -1,0 +1,103 @@
+.wrap {
+  max-width: 600px;
+  margin: 0 auto;
+}
+.account {
+  display: flex;
+}
+.avatar {
+}
+.accountInfo {
+  margin-left: 1rem;
+}
+.nick {
+  font-weight: 600;
+}
+.email {
+  color: #6c757d;
+  font-size: 0.875rem;
+}
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  background-color: #f8f9fa;
+  margin: 1rem 0;
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+.wallet {
+  margin-right: 0.5rem;
+  padding: 0.25rem 1rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  text-decoration: none;
+  color: var(--bs-link-color);
+}
+.walletBalance {
+  display: flex;
+  align-items: center;
+  &::before {
+    margin-right: 0.25rem;
+
+    content: '';
+    display: block;
+    background-image: url(../../../../public/img/wallet.svg);
+    width: 16px;
+    height: 16px;
+  }
+  font-weight: 600;
+  color: var(--bs-body-color);
+}
+.orders {
+  margin-right: 0.5rem;
+  padding: 0.25rem 1rem;
+  color: var(--bs-link-color);
+  text-decoration: none;
+}
+.coupons {
+  padding: 0.25rem 1rem;
+  color: var(--bs-link-color);
+  text-decoration: none;
+}
+.referal {
+  background-color: #f8f9fa;
+  margin: 1rem 0;
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+.referalText {
+  margin-bottom: 1rem;
+}
+.referalLink {
+  background-color: rgba(222, 226, 230, 0.5);
+  border-radius: 0.5rem;
+  display: flex;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+}
+.requisites {
+  background-color: #f8f9fa;
+  margin: 1rem 0;
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+.requisitesTitle {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+.requisitesNotFound {
+  color: #6c757d;
+  font-size: 0.875rem;
+}
+.exit {
+  cursor: pointer;
+  color: var(--bs-link-color);
+  text-decoration: underline;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 1rem;
+  margin: 2rem 0;
+  text-align: center;
+}

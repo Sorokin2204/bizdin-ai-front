@@ -1,0 +1,29 @@
+.wrap {
+  max-width: 600px;
+  margin: 0 auto;
+}
+.title {
+  font-weight: 500;
+  line-height: 1.2;
+  margin-bottom: 0.5rem;
+  margin-top: 0;
+  font-size: calc(1.325rem + 0.9vw);
+}
+.notFound {
+  background-color: #f8f9fa;
+  border-radius: 0.5rem;
+  margin: 1rem 0;
+  padding: 1rem;
+  align-items: center;
+  justify-content: center;
+  padding: 5rem 0;
+  text-align: center;
+}
+.notFoundTitle {
+  font-weight: 500;
+  margin: 1rem 0;
+}
+.notFoundText {
+  color: #6c757d;
+  margin: 0 1rem;
+}

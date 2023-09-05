@@ -1,0 +1,46 @@
+.wrap {
+}
+.labelThin {
+  font-weight: 400 !important;
+}
+.label {
+  font-weight: 600;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+.input {
+  &:focus {
+    background-color: #f8f9fa;
+    border-color: #86b7fe;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+    color: #212529;
+    outline: 0;
+  }
+  margin-bottom: 0.5rem;
+  font-family: inherit;
+  appearance: none;
+  background-clip: padding-box;
+  background-color: #f8f9fa;
+  border: 1px solid #ced4da;
+  border-radius: 0.375rem;
+  color: #212529;
+  display: block;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  padding: 0.375rem 0.75rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  width: 100%;
+}
+.inputGrey {
+  background-color: #f8f9fa;
+  border: 1px solid #ced4da;
+}
+
+.inputBig {
+  border-radius: 0.5rem;
+  font-size: 1.25rem;
+  min-height: calc(1.5em + 1rem + 2px);
+  padding: 0.5rem 1rem;
+  font-weight: 600;
+}

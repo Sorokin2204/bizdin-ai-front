@@ -1,0 +1,10 @@
+.icon {
+  border-radius: 50rem;
+  height: 42px;
+  transition: all 0.1s ease-in-out;
+  width: 42px;
+  transition: opacity 0.3s;
+  &:hover {
+    opacity: 0.75;
+  }
+}

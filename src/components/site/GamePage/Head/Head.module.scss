@@ -1,0 +1,43 @@
+.wrap {
+  display: flex;
+  align-items: start;
+}
+.image {
+  border-radius: 0.5rem;
+  height: 120px;
+  width: 120px;
+}
+.content {
+  padding: 0 1rem 0 1.6rem;
+}
+.title {
+  font-size: 1.77rem;
+  margin-bottom: 0.25rem;
+}
+.offical {
+  &::before {
+    content: '';
+    mask-image: url(../../../../../public/img/shield.svg);
+    width: 16px;
+    height: 16px;
+    background-color: #fff;
+    mask-size: contain;
+    margin-right: 0.1666666667rem;
+  }
+  font-size: 14px;
+  align-items: center;
+  background-color: #d09ebd;
+  background-image: linear-gradient(120deg, #a6c0fe, #f68084);
+  border-radius: 50rem;
+  box-shadow: 0 1px 10px rgba(208, 158, 189, 0.3);
+  color: #fff;
+  display: inline-flex;
+  font-size: 0.875rem;
+  justify-content: center;
+  line-height: 1rem;
+  padding: 0.3333333333rem 0.6666666667rem;
+  margin: 0.5rem 0;
+}
+.text {
+  font-size: 14px;
+}

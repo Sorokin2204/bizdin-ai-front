@@ -1,0 +1,87 @@
+.item {
+  border-bottom: 1px solid #e9ecef;
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+  padding: 0.6666666667rem 1rem 1rem;
+  background-color: rgba(25, 135, 84, 0.06);
+}
+.head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.left {
+  display: flex;
+  align-items: center;
+}
+.user {
+  text-decoration-color: rgba(13, 110, 253, 0.3) !important;
+  color: var(--bs-link-color);
+  text-decoration: underline;
+  margin: 0 0.5rem;
+}
+.date {
+  color: #6c757d;
+  font-size: 0.875rem;
+  margin-bottom: 0.25rem;
+}
+.content {
+  display: inline-block;
+  margin: 0.5rem 0;
+}
+.like {
+  display: inline-block;
+  margin: 0 0.5rem;
+  mask-image: url(../../../../../public/img/like.svg);
+  mask-size: contain;
+  min-width: 16px;
+  min-height: 16px;
+  background-color: #198754;
+}
+.text {
+  display: inline;
+}
+.game {
+  display: flex;
+  align-items: center;
+  margin-top: 0.5rem;
+}
+.gameIcon {
+  margin-right: 0.3333333333rem;
+  border-radius: 50rem;
+  height: 24px;
+  width: 24px;
+}
+.gameName {
+  font-size: 14px;
+  text-decoration-color: rgba(13, 110, 253, 0.3) !important;
+  color: var(--bs-link-color);
+  text-decoration: underline;
+}
+.answer {
+  background-color: rgba(13, 110, 253, 0.05);
+  border-radius: 0.375rem;
+  margin-top: 1rem;
+  padding: 1rem;
+}
+.answerTitle {
+  &::before {
+    content: '';
+    display: block;
+
+    mask-image: url(../../../../../public/img/chevron.svg);
+    mask-size: contain;
+    min-width: 14px;
+    min-height: 14px;
+    background-color: #6c757d;
+  }
+  align-items: center;
+  color: #6c757d;
+  display: flex;
+  font-size: 0.875rem;
+  margin-bottom: 0.5rem;
+}
+.answerText {
+}

@@ -1,0 +1,75 @@
+.wrap {
+  font-size: 16px;
+}
+.head {
+  padding: 13.333px 0px;
+}
+.game {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+}
+.gameImg {
+  border-radius: 50rem;
+  height: 32px;
+  width: 32px;
+  margin-right: 0.5rem;
+}
+.box {
+}
+.gameName {
+  text-decoration-color: rgba(13, 110, 253, 0.3) !important;
+  color: var(--bs-link-color);
+  line-height: 24px;
+  text-decoration: underline;
+}
+.gameCount {
+  text-align: start;
+  color: #6c757d;
+  font-size: 0.65rem;
+}
+.content {
+  padding: 1rem 0;
+  padding-top: 0.5rem;
+}
+.item {
+  align-items: center;
+  border: 1px solid #e9ecef;
+  border-radius: 0.375rem;
+  display: flex;
+  margin: 0.5rem 0;
+  padding: 0.5rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+.itemLeft {
+}
+.itemLine {
+  display: flex;
+  align-items: center;
+  & + & {
+    margin-top: 0.3rem;
+  }
+}
+.itemLineLabel {
+  margin-right: 0.3rem;
+}
+.itemLineValue {
+  color: rgb(33, 37, 41);
+  background-color: #e9ecef;
+  border-radius: 0.25rem;
+  padding: 1px 3px;
+}
+.itemDelete {
+  align-items: center;
+  color: #dc3545;
+  cursor: pointer;
+  display: inline-flex;
+  font-size: 0.875rem;
+  transition: all 0.1s ease-in-out;
+  &:hover {
+    opacity: 0.75;
+  }
+}

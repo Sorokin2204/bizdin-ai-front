@@ -1,0 +1,154 @@
+.muted {
+  background-color: #dee2e6 !important;
+  color: #adb5bd !important;
+}
+
+.muted:hover {
+  color: #adb5bd !important;
+}
+
+.red {
+  background-color: #ff8171;
+  color: #fff3f3;
+}
+
+.red:hover {
+  color: #fff3f3;
+}
+
+.yellow {
+  background-color: #f9d160;
+  color: #fff3ce;
+}
+
+.yellow:hover {
+  color: #fff3ce;
+}
+
+.dblue {
+  background-color: #3a466b;
+  color: #d9e4ff;
+}
+
+.dblue:hover {
+  color: #d9e4ff;
+}
+
+.pink {
+  background-color: #e48195;
+  color: #ffeaf7;
+}
+
+.pink:hover {
+  color: #ffeaf7;
+}
+
+.green {
+  background-color: #5bcfbc;
+  color: #d2fff2;
+}
+
+.green:hover {
+  color: #d2fff2;
+}
+
+.mint {
+  background-color: #5bbe82;
+  color: #d4ffe1;
+}
+
+.mint:hover {
+  color: #d4ffe1;
+}
+
+.violet {
+  background-color: #523971;
+  color: #d2b5f4;
+}
+
+.violet:hover {
+  color: #d2b5f4;
+}
+
+.black {
+  background-color: #191516;
+  color: #e3e3e3;
+}
+
+.black:hover {
+  color: #e3e3e3;
+}
+
+.olive {
+  background-color: #86836d;
+  color: #d7d9c3;
+}
+
+.olive:hover {
+  color: #d7d9c3;
+}
+
+.pumpkin {
+  background-color: #e89a59;
+  color: #ffdbbc;
+}
+
+.pumpkin:hover {
+  color: #ffdbbc;
+}
+
+.onyx {
+  background-color: #403f4c;
+  color: #c8cacc;
+}
+
+.onyx:hover {
+  color: #c8cacc;
+}
+.profile {
+  text-decoration: none !important;
+  position: relative;
+  font-size: 0.875rem;
+  height: 34px;
+  pointer-events: all;
+  text-decoration: none;
+  width: 34px;
+  align-items: center;
+  border-radius: 50rem;
+  display: flex;
+  font-weight: 600;
+  justify-content: center;
+  pointer-events: none;
+  position: relative;
+  text-transform: uppercase;
+}
+.big {
+  font-size: 1rem;
+  width: 50px;
+  height: 50px;
+}
+.small {
+  font-size: 0.65rem;
+  height: 32px;
+  width: 32px;
+}
+.auth {
+  border-radius: 50rem;
+  bottom: 0;
+  height: 16px;
+  position: absolute;
+  right: 0;
+  width: 16px;
+  & img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 65%;
+    width: 65%;
+    object-fit: contain;
+  }
+}
+.authGoogle {
+  background-color: #fff;
+}
