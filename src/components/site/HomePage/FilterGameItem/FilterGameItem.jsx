@@ -1,19 +1,23 @@
 import React from 'react';
 import styles from './FilterGameItem.module.scss';
 import clsx from 'clsx';
-const FilterGameItem = ({ label, value, icon, color, setValue, active, disabled }) => {
+import { imgPath } from '../../../../utils/imgPath';
+import { useDispatch } from 'react-redux';
+import { setActiveFilter } from '../../../../redux/slices/app.slice';
+const FilterGameItem = ({ name, value, icon, color, active, disabled }) => {
+  const dispatch = useDispatch();
   return (
     <div
       className={clsx(styles.btn, active && styles.active, disabled && styles.disabled)}
       onClick={() => {
         if (active) {
-          setValue(null);
+          dispatch(setActiveFilter(null));
         } else {
-          setValue(value);
+          dispatch(setActiveFilter(value));
         }
       }}>
-      <div className={clsx(styles.icon)} style={{ backgroundColor: color, WebkitMaskImage: `url(${icon})` }}></div>
-      <div className={clsx(styles.label)}>{label}</div>
+      <div className={clsx(styles.icon)} style={{ backgroundColor: color, WebkitMaskImage: `url(${imgPath(icon)})` }}></div>
+      <div className={clsx(styles.label)}>{name}</div>
       {active && <div className={clsx(styles.close)} style={{ WebkitMaskImage: `url(/img/close.svg)` }}></div>}
     </div>
   );

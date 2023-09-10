@@ -1,10 +1,12 @@
 .wrap {
+  position: relative;
   max-width: 600px;
   margin: 0 auto;
   background-color: #f8f9fa;
   border-radius: 0.5rem;
   padding: 1.5rem;
   width: 100%;
+  overflow: hidden;
 }
 
 .game {
@@ -53,16 +55,25 @@
 .emailInfo {
   margin-bottom: 1.5rem;
 }
+.email {
+  margin-top: 2rem;
+  margin-bottom: 1.5rem;
+}
 .btn {
   width: min-content;
   margin: 1.5rem auto 2rem;
 }
 .changeBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-decoration-color: rgba(13, 110, 253, 0.3) !important;
   color: var(--bs-link-color);
   text-decoration: underline;
   margin: 0 auto;
   text-align: center;
+  width: min-content;
+  white-space: nowrap;
 }
 .cart {
 }

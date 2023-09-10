@@ -3,12 +3,19 @@
 .labelThin {
   font-weight: 400 !important;
 }
+.blue {
+  color: #0d6efd;
+}
 .label {
   font-weight: 600;
   font-size: 1rem;
   margin-bottom: 0.5rem;
 }
 .input {
+  resize: none;
+  &::placeholder {
+    color: #adb5bd;
+  }
   &:focus {
     background-color: #f8f9fa;
     border-color: #86b7fe;

@@ -29,18 +29,18 @@ const getTitlePage = (path) => {
       return 'Новая страница';
     case '/admin/news/create':
       return 'Новая новость';
-    case '/admin/house/create':
-      return 'Новый дом';
+    case '/admin/game/create':
+      return 'Новая игра';
     case '/admin/pages':
-      return 'Страницы';
-    case '/admin/news':
-      return 'Новости';
-    case '/admin/houses':
-      return 'Дома';
+      return 'Вложениые игры';
+    case '/admin/parent-games':
+      return 'Вложенные игры';
+    case '/admin/games':
+      return 'Игры';
     default:
       {
-        if (path.slice(0, 20) === '/admin/house/update/') {
-          return 'Редактирование дома';
+        if (path.slice(0, 20) === '/admin/game/update/') {
+          return 'Редактирование игры';
         }
         if (path.slice(0, 19) === '/admin/page/update/') {
           return 'Редактирование страницы';
@@ -52,7 +52,7 @@ const getTitlePage = (path) => {
       break;
   }
 };
-const MainLayout = (props) => {
+const AdminLayout = (props) => {
   const { window, children } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const location = useLocation();
@@ -66,51 +66,61 @@ const MainLayout = (props) => {
       <Toolbar />
       <Divider />
       <List>
+        {' '}
         <ListItem key={1} disablePadding>
           <ListItemButton
             onClick={() => {
-              navigate('/admin/pages');
+              navigate('/admin/banners');
             }}
-            selected={location.pathname == '/admin/pages'}>
-            <ListItemText primary={'Страницы'} />
+            selected={location.pathname == '/admin/banners'}>
+            <ListItemText primary={'Баннеры'} />
           </ListItemButton>
         </ListItem>
         <ListItem key={2} disablePadding>
           <ListItemButton
             onClick={() => {
-              navigate('/admin/news');
+              navigate('/admin/support-list');
             }}
-            selected={location.pathname == '/admin/news'}>
-            <ListItemText primary={'Новости'} />
+            selected={location.pathname == '/admin/support-list'}>
+            <ListItemText primary={'Поддержка'} />
           </ListItemButton>
         </ListItem>
         <ListItem key={3} disablePadding>
           <ListItemButton
             onClick={() => {
-              navigate('/admin/houses');
+              navigate('/admin/games');
             }}
-            selected={location.pathname == '/admin/houses'}>
-            <ListItemText primary={'Дома'} />
+            selected={location.pathname == '/admin/games'}>
+            <ListItemText primary={'Игры'} />
+          </ListItemButton>
+        </ListItem>
+        <ListItem key={4} disablePadding>
+          <ListItemButton
+            onClick={() => {
+              navigate('/admin/parent-games');
+            }}
+            selected={location.pathname == '/admin/parent-games'}>
+            <ListItemText primary={'Вложенные игры'} />
           </ListItemButton>
         </ListItem>
       </List>
     </div>
   );
-  const [verifyRequest, setVerifyRequest] = React.useState(null);
+  const [verifyRequest, setVerifyRequest] = React.useState({ data: true });
   React.useEffect(() => {
-    if (localStorage.getItem('token')) {
-      axios
-        .get(apiUrl('verify'), { headers: { request_token: localStorage.getItem('token') } })
-        .then((res) => {
-          setVerifyRequest({ loading: false, data: true });
-        })
-        .catch(() => {
-          setVerifyRequest({ loading: false, error: true });
-          navigate('/admin/login');
-        });
-    } else {
-      navigate('/admin/login');
-    }
+    // if (localStorage.getItem('token')) {
+    //   axios
+    //     .get(apiUrl('verify'), { headers: { request_token: localStorage.getItem('token') } })
+    //     .then((res) => {
+    //       setVerifyRequest({ loading: false, data: true });
+    //     })
+    //     .catch(() => {
+    //       setVerifyRequest({ loading: false, error: true });
+    //       navigate('/admin/login');
+    //     });
+    // } else {
+    //   navigate('/admin/login');
+    // }
   }, []);
 
   const container = window !== undefined ? () => window().document.body : undefined;
@@ -172,4 +182,4 @@ const MainLayout = (props) => {
   );
 };
 
-export default MainLayout;
+export default AdminLayout;

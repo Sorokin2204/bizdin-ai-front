@@ -1,9 +1,21 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './FilterGame.module.scss';
 import FilterGameItem from '../FilterGameItem/FilterGameItem';
 import clsx from 'clsx';
+import { useDispatch } from 'react-redux';
+import { getFilterGameList } from '../../../../redux/actions/app/getFilterGameList';
+import { useSelector } from 'react-redux';
 const FilterGame = () => {
-  const [activeFilter, setActiveFilter] = useState(null);
+  const { activeFilter } = useSelector((state) => state.app);
+  // const [activeFilter, setActiveFilter] = useState(null);
+  const {
+    getFilterGameList: { data: filterList },
+  } = useSelector((state) => state.app);
+  const disaptch = useDispatch();
+  useEffect(() => {
+    disaptch(getFilterGameList());
+  }, []);
+
   const data = [
     {
       label: 'Игры',
@@ -27,8 +39,8 @@ const FilterGame = () => {
   return (
     <>
       <div className={clsx(styles.wrap)}>
-        {data?.map((item) => (
-          <FilterGameItem {...item} setValue={setActiveFilter} active={item.value == activeFilter} disabled={item.value != activeFilter && activeFilter} />
+        {filterList?.map((item) => (
+          <FilterGameItem {...item} value={item.id} active={item.id == activeFilter} disabled={item.id != activeFilter && activeFilter} />
         ))}
       </div>
     </>

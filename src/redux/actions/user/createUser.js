@@ -7,7 +7,7 @@ export const initStateCreateUser = {
 
 export const createUser = createAsyncThunk('user/createUser', async (data, { rejectWithValue, fulfillWithValue }) => {
   return await axios
-    .post(`${process.env.REACT_APP_SERVER_API}/user/register`, data)
+    .post(`${process.env.REACT_APP_SERVER_API}/user/create`, data)
     .then((res) => {
       return fulfillWithValue(res.data);
     })
@@ -26,6 +26,7 @@ export const reducerCreateUser = {
     state.createUser.error = null;
   },
   [createUser.rejected]: (state, action) => {
+    state.createUser.data = null;
     state.createUser.loading = false;
     state.createUser.error = action.payload;
   },

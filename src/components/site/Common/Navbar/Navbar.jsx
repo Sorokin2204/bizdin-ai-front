@@ -4,6 +4,7 @@ import NavbarMenu from '../NavbarMenu/NavbarMenu';
 import NavbarRight from '../NavbarRight/NavbarRight';
 import clsx from 'clsx';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 const Navbar = () => {
   return (
     <>
@@ -11,7 +12,7 @@ const Navbar = () => {
         <div className="container">
           <div className={clsx(styles.inner)}>
             <Link to="/" className={clsx(styles.logo)}>
-              <img src="./img/logo.svg" alt="" />
+              <img src="../img/logo.svg" alt="" />
             </Link>
             <NavbarMenu />
             <NavbarRight />

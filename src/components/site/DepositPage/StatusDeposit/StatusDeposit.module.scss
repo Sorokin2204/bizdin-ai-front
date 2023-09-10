@@ -62,6 +62,14 @@
   padding: 0.1666666667rem 0.6666666667rem;
   white-space: nowrap;
 }
+.statusCircleWait {
+  &::after {
+    mask-image: url(../../../../../public/img/time.svg) !important;
+    background-color: rgba(253, 126, 20, 0.2);
+    color: #fd7e14;
+    text-decoration-color: rgba(253, 126, 20, 0.4);
+  }
+}
 .statusCircle {
   bottom: -5px;
   position: absolute;

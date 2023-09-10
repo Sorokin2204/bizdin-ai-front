@@ -1,20 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { initStateCreateUser, reducerCreateUser } from '../actions/user/createUser';
-import { initStateLoginUser, reducerLoginUser } from '../actions/user/loginUser';
+
 import { initStateAuthUser, reducerAuthUser } from '../actions/user/authUser';
-import { initStateUpdateUser, reducerUpdateUser } from '../actions/user/updateUser';
-import { initStateUpsertResult, reducerUpsertResult } from '../actions/user/upsertResult';
-import { initStateGetResult, reducerGetResult } from '../actions/user/getResult';
-import { initStateGetUserList, reducerGetUserList } from '../actions/user/getUserList';
+import { initStateCreateUser, reducerCreateUser } from '../actions/user/createUser';
+import { initStateLoginEmail, reducerLoginEmail } from '../actions/user/loginEmail';
 
 export const initialState = {
-  ...initStateCreateUser,
-  ...initStateLoginUser,
   ...initStateAuthUser,
-  ...initStateUpdateUser,
-  ...initStateUpsertResult,
-  ...initStateGetResult,
-  ...initStateGetUserList,
+  ...initStateCreateUser,
+  ...initStateLoginEmail,
 };
 
 export const userSlice = createSlice({
@@ -27,22 +20,15 @@ export const userSlice = createSlice({
     resetCreateUser(state) {
       state.createUser = initStateCreateUser.createUser;
     },
-    resetLoginUser(state) {
-      state.loginUser = initStateLoginUser.loginUser;
-    },
-    resetUpdateUser(state) {
-      state.updateUser = initStateUpdateUser.updateUser;
+    resetLoginEmail(state) {
+      state.loginEmail = initStateLoginEmail.loginEmail;
     },
   },
   extraReducers: {
-    ...reducerCreateUser,
-    ...reducerLoginUser,
     ...reducerAuthUser,
-    ...reducerUpdateUser,
-    ...reducerUpsertResult,
-    ...reducerGetResult,
-    ...reducerGetUserList,
+    ...reducerCreateUser,
+    ...reducerLoginEmail,
   },
 });
-export const { resetCreateUser, resetLoginUser, resetUpdateUser, resetAuthUser } = userSlice.actions;
+export const { resetAuthUser, resetCreateUser, resetLoginEmail } = userSlice.actions;
 export const userReducer = userSlice.reducer;

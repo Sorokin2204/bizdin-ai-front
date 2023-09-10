@@ -7,17 +7,17 @@ const NavbarMenu = () => {
     {
       label: 'Каталог',
       slug: '/',
-      icon: './img/catalog.svg',
+      icon: '../img/catalog.svg',
     },
     {
       label: 'Отзывы',
       slug: '/reviews',
-      icon: './img/heart.svg',
+      icon: '../img/heart.svg',
     },
     {
       label: 'Поддержка',
       slug: '/support',
-      icon: './img/support.svg',
+      icon: '../img/support.svg',
     },
   ];
   return (

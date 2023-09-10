@@ -1,12 +1,13 @@
 import React from 'react';
 import styles from './SliderBannerItem.module.scss';
 import clsx from 'clsx';
-const SliderBannerItem = ({ preview, text }) => {
+import { Link } from 'react-router-dom';
+const SliderBannerItem = ({ preview, text, slug }) => {
   return (
     <>
-      <div className={clsx(styles.wrap)} style={{ backgroundImage: `url(${preview})` }}>
+      <Link to={slug} className={clsx(styles.wrap)} style={{ backgroundImage: `url(${preview})` }}>
         <div className={clsx(styles.text)}>{text}</div>
-      </div>
+      </Link>
     </>
   );
 };

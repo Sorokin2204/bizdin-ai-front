@@ -1,18 +1,33 @@
 import React from 'react';
 import styles from './Input.module.scss';
 import clsx from 'clsx';
-const Input = ({ label, placeholder, isSelect, grey, lg }) => {
+import { Controller } from 'react-hook-form';
+const Input = ({ label, placeholder, isSelect, grey, lg, slug, rules = { required: true }, form, options = [], blue, rows, isTextarea }) => {
   return (
     <>
       <div className={clsx(styles.wrap)}>
-        <div className={clsx(styles.label, grey && styles.labelThin)}>{label}</div>
+        {label && <div className={clsx(styles.label, grey && styles.labelThin, blue && styles.blue)}>{label}</div>}
+
         {isSelect ? (
-          <select className={clsx(styles.input, grey && styles.inputGrey, lg && styles.inputBig)}>
-            <option>Global</option>
-            <option>Korean</option>
-          </select>
+          <Controller
+            control={form.control}
+            name={slug}
+            rules={rules}
+            render={({ field }) => {
+              return (
+                <select className={clsx(styles.input, grey && styles.inputGrey, lg && styles.inputBig)} {...field}>
+                  <option value={''} selected disabled></option>
+                  {options?.map((opt) => (
+                    <option value={opt.id}>{opt.label}</option>
+                  ))}
+                </select>
+              );
+            }}
+          />
+        ) : isTextarea ? (
+          <textarea rows={rows} type="text" className={clsx(styles.input, grey && styles.inputGrey, lg && styles.inputBig)} placeholder={placeholder} {...form.register(slug, rules)} />
         ) : (
-          <input type="text" className={clsx(styles.input, grey && styles.inputGrey, lg && styles.inputBig)} placeholder={placeholder} />
+          <input type="text" className={clsx(styles.input, grey && styles.inputGrey, lg && styles.inputBig)} placeholder={placeholder} {...form.register(slug, rules)} />
         )}
       </div>
     </>

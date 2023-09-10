@@ -1,10 +1,23 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styles from './SupportPage.module.scss';
 import clsx from 'clsx';
 import { Link } from 'react-router-dom';
+import Breadcrumbs from '../../../components/site/Breadcrumbs/Breadcrumbs';
+import { useDispatch } from 'react-redux';
+import { getSupportList } from '../../../redux/actions/support/getSupportList';
+import { useSelector } from 'react-redux';
 const SupportPage = () => {
+  const {
+    getSupportList: { data: supportData },
+  } = useSelector((state) => state.support);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getSupportList());
+  }, []);
+
   return (
     <>
+      <Breadcrumbs list={[{ name: 'Поддержка', slug: '/support' }]} />
       <div className={clsx(styles.wrap)}>
         <div className={clsx(styles.title)}>Поддержка</div>
         <div className={clsx(styles.block)}>
@@ -12,11 +25,11 @@ const SupportPage = () => {
         </div>
         <div className={clsx(styles.subtitle)}>Частые вопросы и ответы на них</div>
         <div className={clsx(styles.list)}>
-          <Link to="/support-single" className={clsx(styles.item)}>
-            Как происходит пополнение в игры/сервисы? ⬆️
-          </Link>{' '}
-          <div className={clsx(styles.item)}>Почему у нас дешевле разработчика? 📉</div> <div className={clsx(styles.item)}>Безопасен ли Донат в игры через вас? 🛡️</div> <div className={clsx(styles.item)}>Что такое Купоны? 🎟️</div>
-          <div className={clsx(styles.item)}>Ничего не пришло! Что делать? 😱</div>
+          {supportData?.map((item) => (
+            <Link to={`/support/${item?.slug}`} className={clsx(styles.item)}>
+              {item?.name}
+            </Link>
+          ))}
         </div>
         <div className={clsx(styles.coop)}>По вопросам сотрудничества netdonatov@gmail.com</div>
       </div>
