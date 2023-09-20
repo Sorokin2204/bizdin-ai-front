@@ -1,10 +1,17 @@
 .wrap {
   font-size: 16px;
+  width: 100%;
+  max-width: 500px;
+  padding: 0 16px;
 }
 .head {
   padding: 13.333px 0px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 .game {
+  height: 40px;
   display: flex;
   align-items: center;
   justify-content: start;
@@ -50,7 +57,7 @@
   display: flex;
   align-items: center;
   & + & {
-    margin-top: 0.3rem;
+    margin-top: 0.1rem;
   }
 }
 .itemLineLabel {
@@ -60,7 +67,9 @@
   color: rgb(33, 37, 41);
   background-color: #e9ecef;
   border-radius: 0.25rem;
-  padding: 1px 3px;
+  padding: 0px 3px;
+  height: 20px;
+  line-height: 20px;
 }
 .itemDelete {
   align-items: center;
@@ -71,5 +80,16 @@
   transition: all 0.1s ease-in-out;
   &:hover {
     opacity: 0.75;
+  }
+}
+.close {
+  mask-image: url(../../../../../public/img/close.svg);
+  width: 22px;
+  height: 22px;
+  mask-size: contain;
+  background-color: #0d6efd !important;
+  cursor: pointer;
+  &:hover {
+    opacity: 0.5;
   }
 }

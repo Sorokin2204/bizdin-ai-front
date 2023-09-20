@@ -16,26 +16,6 @@ const FilterGame = () => {
     disaptch(getFilterGameList());
   }, []);
 
-  const data = [
-    {
-      label: 'Игры',
-      icon: './img/star.svg',
-      color: '#0d6efd',
-      value: 'game',
-    },
-    {
-      label: 'Сервисы',
-      icon: './img/service.svg',
-      color: '#dc3545',
-      value: 'service',
-    },
-    {
-      label: 'Софт и VPN',
-      icon: './img/catalog.svg',
-      color: '#ffc107',
-      value: 'soft',
-    },
-  ];
   return (
     <>
       <div className={clsx(styles.wrap)}>

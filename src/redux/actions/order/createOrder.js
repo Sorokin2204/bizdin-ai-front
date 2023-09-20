@@ -5,9 +5,9 @@ export const initStateCreateOrder = {
   createOrder: { data: null, loading: false, error: null },
 };
 
-export const createOrder = createAsyncThunk('order/createOrder', async ({ token, ...data }, { rejectWithValue, fulfillWithValue }) => {
+export const createOrder = createAsyncThunk('order/createOrder', async (data, { rejectWithValue, fulfillWithValue }) => {
   return await axios
-    .post(`${process.env.REACT_APP_SERVER_API}/order/create`, data, { headers: { 'auth-token': token } })
+    .post(`${process.env.REACT_APP_SERVER_API}/order/create`, data, { headers: { 'auth-token': localStorage.getItem('auth-token') } })
     .then((res) => {
       return fulfillWithValue(res.data);
     })

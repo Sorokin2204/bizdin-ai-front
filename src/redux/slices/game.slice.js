@@ -10,12 +10,16 @@ export const initialState = {
   ...initStateGetGameList,
   ...initStateUpdateGame,
   activePackages: null,
+  activeSaveGameInputs: null,
 };
 
 export const gameSlice = createSlice({
   name: 'game',
   initialState,
   reducers: {
+    setActiveSaveGameInputs(state, action) {
+      state.activeSaveGameInputs = action.payload;
+    },
     setActivePackages(state, action) {
       state.activePackages = action.payload;
     },
@@ -36,5 +40,5 @@ export const gameSlice = createSlice({
     ...reducerUpdateGame,
   },
 });
-export const { resetGetSingleGame, resetCreateGame, resetUpdateGame, setActivePackages } = gameSlice.actions;
+export const { resetGetSingleGame, resetCreateGame, resetUpdateGame, setActivePackages, setActiveSaveGameInputs } = gameSlice.actions;
 export const gameReducer = gameSlice.reducer;

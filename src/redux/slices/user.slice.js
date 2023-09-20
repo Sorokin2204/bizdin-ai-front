@@ -3,11 +3,13 @@ import { createSlice } from '@reduxjs/toolkit';
 import { initStateAuthUser, reducerAuthUser } from '../actions/user/authUser';
 import { initStateCreateUser, reducerCreateUser } from '../actions/user/createUser';
 import { initStateLoginEmail, reducerLoginEmail } from '../actions/user/loginEmail';
+import { initStateAuthAdmin, reducerAuthAdmin } from '../actions/user/authAdmin';
 
 export const initialState = {
   ...initStateAuthUser,
   ...initStateCreateUser,
   ...initStateLoginEmail,
+  ...initStateAuthAdmin,
 };
 
 export const userSlice = createSlice({
@@ -28,6 +30,7 @@ export const userSlice = createSlice({
     ...reducerAuthUser,
     ...reducerCreateUser,
     ...reducerLoginEmail,
+    ...reducerAuthAdmin,
   },
 });
 export const { resetAuthUser, resetCreateUser, resetLoginEmail } = userSlice.actions;

@@ -10,7 +10,7 @@ import { resultData } from '../../../../pages/site/TouUpPage/TouUpPage';
 import { useSelector } from 'react-redux';
 import { imgPath } from '../../../../utils/imgPath';
 import { currencyFormat } from '../../../../utils/currencyFormat';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { setActivePayment } from '../../../../redux/slices/app.slice';
 import Input from '../../Common/Input/Input';
@@ -19,6 +19,8 @@ import ErrorMessage from '../../Common/ErrorMessage/ErrorMessage';
 import Loading from '../../Loading/Loading';
 import { createUser } from '../../../../redux/actions/user/createUser';
 import { createOrder } from '../../../../redux/actions/order/createOrder';
+import { resetCreateOrder } from '../../../../redux/slices/order.slice';
+import { resetGetSingleGame } from '../../../../redux/slices/game.slice';
 const Cart = () => {
   const emailData = [
     {
@@ -30,11 +32,14 @@ const Cart = () => {
     getSingleGame: { data: gameData },
   } = useSelector((state) => state.game);
   const {
-    createOrder: { data: createOrderData, createOrderLoading },
+    createOrder: { data: createData, loading: createLoading, error: createError },
   } = useSelector((state) => state.order);
+  const {
+    createUser: { data: createUserData, loading: createUserLoading, error: createUserError },
+  } = useSelector((state) => state.user);
   const { activePayment } = useSelector((state) => state.app);
   const {
-    createUser: { data: createData, loading: createLoading, error: createError },
+    authUser: { data: dataAuth, loading: loadingAuth, error: errorAuth },
   } = useSelector((state) => state.user);
   const [infoData, setInfoData] = useState([]);
   const [resultData, setResultData] = useState([]);
@@ -69,12 +74,20 @@ const Cart = () => {
     setInfoData(arr);
   }, []);
   useEffect(() => {
-    if (packageList?.length !== 0) {
-      let total = packageList
-        ?.map((item) => item.price)
-        .reduce((accumulator, currentValue) => {
-          return accumulator + currentValue;
-        }, 0);
+    let dataCart = localStorage.getItem('cart');
+    dataCart = JSON.parse(dataCart);
+    if (packageList?.length !== 0 || gameData?.gameInputs?.filter((input) => input?.mainInput)?.length !== 0) {
+      let total;
+      if (packageList?.length !== 0) {
+        total = packageList
+          ?.map((item) => item.price)
+          .reduce((accumulator, currentValue) => {
+            return accumulator + currentValue;
+          }, 0);
+      } else {
+        total = parseInt(dataCart?.gameInputList?.filter((input) => input?.mainInput)?.[0]?.value);
+      }
+
       let totalCommision;
       let commision;
       if (activePayment) {
@@ -108,14 +121,22 @@ const Cart = () => {
       gameId: gameData.id,
       typePaymentId: activePayment.id,
     };
-    dispatch(createUser({ email: data.email, order: orderData }));
-  };
-  // useEffect(() => {
-  //   if (createData) {
 
-  //     dispatch(createOrder(orderData));
-  //   }
-  // }, [createData]);
+    if (dataAuth && localStorage.getItem('auth-token')) {
+      dispatch(createOrder(orderData));
+    } else {
+      dispatch(createUser({ email: data.email, order: orderData }));
+    }
+  };
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (createData) {
+      dispatch(resetGetSingleGame());
+      dispatch(resetCreateOrder());
+      localStorage.removeItem('cart');
+      navigate(`/deposit/${createData.orderId}`);
+    }
+  }, [createData]);
 
   useEffect(() => {
     cartForm.register('typePayment', { required: { value: true, message: 'Выберите способ оплаты' } });
@@ -128,18 +149,23 @@ const Cart = () => {
   }, [activePayment]);
 
   return (
-    <>
+    <div class="container">
       <div className={clsx(styles.wrap)}>
         <div className={clsx(styles.game)}>
           <img src={imgPath(gameData.preview)} className={clsx(styles.gameIcon)} />
           <div className={clsx(styles.gameName)}>{gameData?.name}</div>
         </div>
-        <div className={clsx(styles.title)}>Ваша покупка</div>
-        <div className={clsx(styles.packageList)}>
-          {packageList?.map((pack) => (
-            <PackageItem {...pack} noClick />
-          ))}
-        </div>
+        {packageList?.length !== 0 && (
+          <>
+            {' '}
+            <div className={clsx(styles.title)}>Ваша покупка</div>
+            <div className={clsx(styles.packageList)}>
+              {packageList?.map((pack) => (
+                <PackageItem {...pack} noClick />
+              ))}
+            </div>
+          </>
+        )}
 
         {infoData?.length !== 0 && (
           <>
@@ -151,23 +177,37 @@ const Cart = () => {
             </div>
           </>
         )}
+        {dataAuth ? (
+          <div className={clsx(styles.emailInfo)}>
+            {' '}
+            <TopUpResult
+              data={[
+                {
+                  label: 'Ваш Email	',
+                  value: dataAuth?.email,
+                },
+              ]}
+            />
+          </div>
+        ) : (
+          <div className={clsx(styles.email)}>
+            <Input
+              label={'Ваш Email'}
+              placeholder={'Email'}
+              form={cartForm}
+              slug="email"
+              blue
+              rules={{
+                required: { value: true, message: 'Укажите свой email' },
+                pattern: {
+                  value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                  message: 'Укажите свой email',
+                },
+              }}
+            />
+          </div>
+        )}
 
-        <div className={clsx(styles.email)}>
-          <Input
-            label={'Ваш Email'}
-            placeholder={'Email'}
-            form={cartForm}
-            slug="email"
-            blue
-            rules={{
-              required: { value: true, message: 'Укажите свой email' },
-              pattern: {
-                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                message: 'Укажите свой email',
-              },
-            }}
-          />
-        </div>
         {/* <div className={clsx(styles.emailInfo)}>
           {' '}
           <TopUpResult data={emailData} />
@@ -175,7 +215,7 @@ const Cart = () => {
 
         <SelectTopUpMethod cart />
         <TopUpResult data={resultData} />
-        {createError?.error == 'USER_EXIST' && <ErrorMessage text={'Пользователь с таким email уже существует'} />}
+        {createUserError?.error == 'USER_EXIST' && <ErrorMessage text={'Пользователь с таким email уже существует'} />}
         {Object.keys(cartForm.formState.errors).map((key, index) => {
           if (index == 0) {
             return <ErrorMessage text={cartForm.formState.errors[key].message || 'Заполните поля'} />;
@@ -190,9 +230,9 @@ const Cart = () => {
         <Link to={gameData?.parentGame ? `/${gameData?.parentGame?.slug}/${gameData?.slug}` : `/${gameData?.slug}`} className={clsx(styles.changeBtn)}>
           Изменить заказ
         </Link>
-        {(createLoading || createOrderLoading) && <Loading />}
+        {createLoading && <Loading />}
       </div>
-    </>
+    </div>
   );
 };
 

@@ -7,7 +7,7 @@ export const initStateCreateSupport = {
 
 export const createSupport = createAsyncThunk('support/createSupport', async (data, { rejectWithValue, fulfillWithValue }) => {
   return await axios
-    .post(`${process.env.REACT_APP_SERVER_API}/support/create`, data)
+    .post(`${process.env.REACT_APP_SERVER_API}/support/create`, data, { headers: { 'auth-token': localStorage.getItem('auth-token') } })
     .then((res) => {
       return fulfillWithValue(res.data);
     })

@@ -1,5 +1,9 @@
 .item {
   text-decoration: none;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: start;
   color: var(--bs-link-color);
   &:hover .tag {
     background-color: rgba(0, 0, 0, 0.6);
@@ -9,11 +13,14 @@
   position: relative;
   background-position: 50% 50%;
   background-size: contain;
-  width: 230px;
-  height: 230px;
-  min-width: 230px;
-  min-height: 230px;
+  // width: 230px;
+  // height: 230px;
+  // min-width: 230px;
+  // min-height: 230px;
+  width: 100%;
+  aspect-ratio: 1 / 1;
   border-radius: 1rem !important;
+  margin-bottom: 0.3333333333rem;
 }
 .icon {
   background-color: #f8f9fa;
@@ -65,6 +72,8 @@
 .tagName {
 }
 .name {
+  display: block;
+
   text-align: center;
   margin: 0 auto;
 }

@@ -51,8 +51,7 @@ const CartPage = () => {
           </div>
         </>
       ) : (
-        <>
-          {' '}
+        <div class="container">
           <div className={clsx(styles.empty)}>
             <img src="../img/empty-cart.webp" alt="" className={clsx(styles.emptyImage)} />
             <div className={clsx(styles.emptyTitle)}>Пустая корзина</div>
@@ -60,7 +59,7 @@ const CartPage = () => {
               Для добавления в корзину выберите товар на <Link to="/">главной странице</Link>
             </div>
           </div>
-        </>
+        </div>
       )}
     </>
   );

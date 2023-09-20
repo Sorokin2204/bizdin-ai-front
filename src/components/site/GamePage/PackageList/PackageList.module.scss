@@ -6,6 +6,11 @@
   overflow: hidden;
   position: relative;
 }
+@media (max-width: 591px) {
+  .list {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
 .wrap {
   position: relative;
   background-color: #f8f9fa;

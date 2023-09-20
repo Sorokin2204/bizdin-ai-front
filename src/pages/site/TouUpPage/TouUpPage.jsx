@@ -7,6 +7,7 @@ import TopUpResult from '../../../components/site/TopUp/TopUpResult/TopUpResult'
 import Button from '../../../components/site/Common/Button/Button';
 import clsx from 'clsx';
 import { currencyFormat } from '../../../utils/currencyFormat';
+import { useForm } from 'react-hook-form';
 
 export const resultData = [
   { label: 'Сумма пополнения', value: currencyFormat(5000) },
@@ -15,12 +16,13 @@ export const resultData = [
 ];
 
 const TouUpPage = () => {
+  const topupForm = useForm();
   return (
     <>
       <div className={clsx(styles.wrap)}>
         <div className={clsx(styles.title)}>Пополнение DWallet</div>
         <div className={clsx(styles.block)}>
-          <Input label="Сумма" lg />
+          <Input label="Сумма" lg form={topupForm} slug={'sum'} />
           <SelectPrice />
           <SelectTopUpMethod />
           <TopUpResult data={resultData} />

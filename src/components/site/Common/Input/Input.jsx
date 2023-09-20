@@ -3,6 +3,7 @@ import styles from './Input.module.scss';
 import clsx from 'clsx';
 import { Controller } from 'react-hook-form';
 const Input = ({ label, placeholder, isSelect, grey, lg, slug, rules = { required: true }, form, options = [], blue, rows, isTextarea }) => {
+  const watchVal = form.watch(slug);
   return (
     <>
       <div className={clsx(styles.wrap)}>
@@ -15,8 +16,8 @@ const Input = ({ label, placeholder, isSelect, grey, lg, slug, rules = { require
             rules={rules}
             render={({ field }) => {
               return (
-                <select className={clsx(styles.input, grey && styles.inputGrey, lg && styles.inputBig)} {...field}>
-                  <option value={''} selected disabled></option>
+                <select className={clsx(styles.input, grey && styles.inputGrey, lg && styles.inputBig)} {...field} value={watchVal}>
+                  <option value={''} disabled style={{ display: 'none' }}></option>
                   {options?.map((opt) => (
                     <option value={opt.id}>{opt.label}</option>
                   ))}

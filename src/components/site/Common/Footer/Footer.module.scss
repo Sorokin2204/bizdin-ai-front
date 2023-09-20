@@ -8,6 +8,23 @@
   justify-content: space-between;
   margin-bottom: 2rem;
 }
+@media (max-width: 444px) {
+  .top {
+    flex-direction: column;
+  }
+  .listSocial {
+    margin-top: 1rem;
+  }
+  .copy {
+    justify-content: center;
+  }
+  .bottomLinkList {
+    justify-content: center;
+  }
+  .text {
+    text-align: center;
+  }
+}
 .listList {
   display: flex;
   align-items: center;

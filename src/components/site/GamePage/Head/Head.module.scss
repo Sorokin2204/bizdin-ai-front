@@ -13,6 +13,7 @@
 .title {
   font-size: 1.77rem;
   margin-bottom: 0.25rem;
+  font-weight: 500;
 }
 .offical {
   &::before {
@@ -20,6 +21,8 @@
     mask-image: url(../../../../../public/img/shield.svg);
     width: 16px;
     height: 16px;
+    min-width: 16px;
+    min-height: 16px;
     background-color: #fff;
     mask-size: contain;
     margin-right: 0.1666666667rem;
@@ -37,6 +40,11 @@
   line-height: 1rem;
   padding: 0.3333333333rem 0.6666666667rem;
   margin: 0.5rem 0;
+}
+@media (max-width: 444px) {
+  .offical {
+    font-size: 14px;
+  }
 }
 .text {
   font-size: 14px;

@@ -7,7 +7,7 @@ export const initStateUpdateParentGame = {
 
 export const updateParentGame = createAsyncThunk('game/updateParentGame', async (data, { rejectWithValue, fulfillWithValue }) => {
   return await axios
-    .post(`${process.env.REACT_APP_SERVER_API}/parent-game/update`, data)
+    .post(`${process.env.REACT_APP_SERVER_API}/parent-game/update`, data, { headers: { 'auth-token': localStorage.getItem('auth-token') } })
     .then((res) => {
       return fulfillWithValue(res.data);
     })

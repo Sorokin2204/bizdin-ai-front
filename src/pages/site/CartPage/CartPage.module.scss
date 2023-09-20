@@ -36,6 +36,7 @@
 .emptyText {
   color: #6c757d;
   margin: 0 1rem;
+  text-align: center;
   & a {
     text-decoration-color: rgba(13, 110, 253, 0.3) !important;
     color: var(--bs-link-color);

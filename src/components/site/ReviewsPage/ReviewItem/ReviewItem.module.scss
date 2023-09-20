@@ -7,6 +7,14 @@
   padding: 0.6666666667rem 1rem 1rem;
   background-color: rgba(25, 135, 84, 0.06);
 }
+.itemDislike {
+  background-color: rgba(108, 117, 125, 0.06) !important;
+
+  & .like {
+    mask-image: url(../../../../../public/img/dislike.svg);
+    background-color: #6c757d;
+  }
+}
 .head {
   display: flex;
   align-items: center;

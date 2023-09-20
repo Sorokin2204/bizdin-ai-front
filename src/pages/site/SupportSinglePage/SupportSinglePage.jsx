@@ -22,9 +22,11 @@ const SupportSinglePage = () => {
       {data && (
         <>
           <Breadcrumbs list={[{ name: 'Поддержка', path: '/support' }, { name: data?.name }]} />
-          <div className={clsx(styles.wrap)}>
-            <div className={clsx(styles.title)}>{data?.name}</div>
-            <div className={clsx(styles.content)}>{<Interweave content={data?.desc} />}</div>
+          <div class="container">
+            <div className={clsx(styles.wrap)}>
+              <div className={clsx(styles.title)}>{data?.name}</div>
+              <div className={clsx(styles.content)}>{<Interweave content={data?.desc} />}</div>
+            </div>
           </div>
         </>
       )}

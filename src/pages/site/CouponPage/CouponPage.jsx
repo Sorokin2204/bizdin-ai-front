@@ -7,7 +7,7 @@ const CouponPage = () => {
     <>
       <div className={clsx(styles.wrap)}>
         <div className={clsx(styles.title)}>Купоны</div>
-        <CouponItem />
+        {/* <CouponItem /> */}
         <div className={clsx(styles.notFound)}>
           <div className={clsx(styles.notFoundTitle)}>Нет доступных купонов</div>
           <div className={clsx(styles.notFoundText)}>Получайте купоны со скидками за покупки</div>

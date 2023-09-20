@@ -7,7 +7,7 @@ export const initStateUpdateBanner = {
 
 export const updateBanner = createAsyncThunk('game/updateBanner', async (data, { rejectWithValue, fulfillWithValue }) => {
   return await axios
-    .post(`${process.env.REACT_APP_SERVER_API}/banner/update`, data)
+    .post(`${process.env.REACT_APP_SERVER_API}/banner/update`, data, { headers: { 'auth-token': localStorage.getItem('auth-token') } })
     .then((res) => {
       return fulfillWithValue(res.data);
     })

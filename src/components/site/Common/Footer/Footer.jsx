@@ -1,25 +1,32 @@
 import React from 'react';
 import styles from './Footer.module.scss';
 import clsx from 'clsx';
+import { Link } from 'react-router-dom';
 const Footer = () => {
   return (
     <>
       <div className={clsx(styles.wrap)}>
         <div className={clsx(styles.top)}>
           <div className={clsx(styles.listList)}>
-            <div className={clsx(styles.link)}>Главная</div>
-            <div className={clsx(styles.link)}>Отзывы</div>
-            <div className={clsx(styles.link)}>Поддержка</div>
+            <Link to="/" className={clsx(styles.link)}>
+              Главная
+            </Link>
+            <Link to="/feedback" className={clsx(styles.link)}>
+              Отзывы
+            </Link>
+            <Link to="/support" className={clsx(styles.link)}>
+              Поддержка
+            </Link>
           </div>
           <div className={clsx(styles.listSocial)}>
             <div className={clsx(styles.social)}>
-              <img src="./img/telegram.svg" />
+              <img src="../img/telegram.svg" />
             </div>
             <div className={clsx(styles.social)}>
-              <img src="./img/vkontakte.svg" />
+              <img src="../img/vkontakte.svg" />
             </div>
             <div className={clsx(styles.social)}>
-              <img src="./img/youtube.svg" />
+              <img src="../img/youtube.svg" />
             </div>
           </div>
         </div>
@@ -29,13 +36,20 @@ const Footer = () => {
           валюту? Легко с Donatov.net.
         </div>
         <div className={clsx(styles.copy)}>
-          <img src="./img/wallet-logo.svg" />
+          <img src="../img/wallet-logo.svg" />
           Donatov.net 2023
         </div>
         <div className={clsx(styles.bottomLinkList)}>
-          <div className={clsx(styles.bottomLink)}>Политика обработки данных </div>
-          <div className={clsx(styles.bottomLink)}>Пользовательское соглашение </div>
-          <div className={clsx(styles.bottomLink)}> Политика возврата </div>
+          <Link to="/privacy" className={clsx(styles.bottomLink)}>
+            Политика обработки данных{' '}
+          </Link>
+          <Link to="/eula" className={clsx(styles.bottomLink)}>
+            Пользовательское соглашение{' '}
+          </Link>
+          <Link to="/refund" className={clsx(styles.bottomLink)}>
+            {' '}
+            Политика возврата{' '}
+          </Link>
         </div>
       </div>
     </>

@@ -7,7 +7,9 @@ const LoginAttempt = () => {
   return (
     <>
       <Breadcrumbs list={[{ name: 'Вход' }]} />
-      <Thanks title="Ссылка отправлена" text="Ссылка для входа отправлена на daniil.sorokin.228@gmail.com" />
+      <div class="container">
+        <Thanks title="Ссылка отправлена" text="Ссылка для входа отправлена на daniil.sorokin.228@gmail.com" />
+      </div>
     </>
   );
 };

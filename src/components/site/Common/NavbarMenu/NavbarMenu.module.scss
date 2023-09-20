@@ -37,3 +37,9 @@
 }
 .name {
 }
+
+@media (max-width: 764px) {
+  .list {
+    display: none;
+  }
+}

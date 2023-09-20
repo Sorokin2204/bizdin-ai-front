@@ -8,6 +8,8 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { createComment } from '../../../redux/actions/comment/createComment';
 import { useSelector } from 'react-redux';
+import Breadcrumbs from '../../../components/site/Breadcrumbs/Breadcrumbs';
+import CreateReviewBlock from '../../../components/site/ReviewsPage/CreateReviewBlock/CreateReviewBlock';
 const CreateReviewPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const defaultValues = {
@@ -17,8 +19,11 @@ const CreateReviewPage = () => {
   const {
     createComment: { data: createCommentData },
   } = useSelector((state) => state.comment);
+
+  const {
+    authUser: { data: authData },
+  } = useSelector((state) => state.user);
   const feedbackForm = useForm({ defaultValues });
-  const like = feedbackForm.watch('like');
   const dispatch = useDispatch();
   const onSubmit = (data) => {
     const gameId = searchParams.get('good_id');
@@ -38,25 +43,29 @@ const CreateReviewPage = () => {
 
   return (
     <>
-      <div className={clsx(styles.wrap)}>
-        <div className={clsx(styles.title)}>Оставить отзыв</div>
-        <div className={clsx(styles.block)}>
-          <Input form={feedbackForm} slug="text" placeholder={'Ваш отзыв'} isTextarea rows={5} />
-          <div className={clsx(styles.likeBlock)}>
-            <div
-              className={clsx(styles.like, !like && styles.notActive)}
-              onClick={() => {
-                feedbackForm.setValue('like', true);
-              }}></div>
-            <div
-              className={clsx(styles.dislike, like && styles.notActive)}
-              onClick={() => {
-                feedbackForm.setValue('like', false);
-              }}></div>
-          </div>
-          <div className={clsx(styles.btn)} onClick={feedbackForm.handleSubmit(onSubmit)}>
-            <Button lg> Отправить</Button>
-          </div>
+      <Breadcrumbs list={[{ name: 'Отзывы', path: '/feedback' }, { name: 'Оставить отзыв' }]} />
+      <div class="container">
+        <div className={clsx(styles.wrap)}>
+          <div className={clsx(styles.title)}>Оставить отзыв</div>
+          {authData ? (
+            <CreateReviewBlock feedbackForm={feedbackForm} onSubmit={onSubmit} />
+          ) : (
+            <>
+              <div className={clsx(styles.signIn)}>
+                <div className={clsx(styles.signInText)}>Войдите, чтобы оставить отзыв</div>
+                <div className={clsx(styles.signInBtn)}>
+                  {' '}
+                  <Button
+                    lg
+                    onClick={() => {
+                      navigate('/login');
+                    }}>
+                    Войти
+                  </Button>
+                </div>
+              </div>
+            </>
+          )}
         </div>
       </div>
     </>

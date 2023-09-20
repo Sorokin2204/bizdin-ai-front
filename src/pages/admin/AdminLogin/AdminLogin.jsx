@@ -35,13 +35,6 @@ const AdminLogin = () => {
   const navigate = useNavigate();
   return (
     <>
-      <img
-        onClick={() => {
-          navigate('/');
-        }}
-        src="/img/logo.png"
-        style={{ margin: '0 auto', display: 'block', marginTop: '20px' }}
-      />
       <Box sx={{ display: 'flex', flexDirection: 'column', maxWidth: '300px', alignItems: 'center', justifyContent: 'center', position: 'fixed', top: '50%', left: '50%', transform: 'translate(-50%,-50%)' }}>
         <Box sx={{ fontSize: '20px', mb: 2 }}>Вход</Box>
         <Controller name="login" control={loginForm.control} rules={{ required: true }} render={({ field }) => <TextField sx={{ mb: 2 }} size="small" error={errors?.login} helperText={errors?.login && 'Заполните поле'} label={'Логин'} {...field} />} />

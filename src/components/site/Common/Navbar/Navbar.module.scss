@@ -5,6 +5,10 @@
   position: relative;
   padding: 12px 0;
 }
+@media (max-width: 444px) {
+  .wrap {
+  }
+}
 .inner {
   display: flex;
   align-items: center;
@@ -15,4 +19,18 @@
 .logo {
   height: 29px;
   width: 160px;
+  //
+}
+@media (max-width: 764px) {
+  .logo {
+    margin-right: auto;
+  }
+}
+@media (max-width: 444px) {
+  .logo {
+    display: block;
+    display: flex;
+    align-items: center;
+    width: 120px;
+  }
 }

@@ -4,7 +4,12 @@ import { currencyFormat } from '../../../../utils/currencyFormat';
 import StatusDeposit from '../StatusDeposit/StatusDeposit';
 import clsx from 'clsx';
 import { imgPath } from '../../../../utils/imgPath';
-const DepositPackageItem = ({ icon, price, name, status }) => {
+import { PublishedWithChangesOutlined } from '@mui/icons-material';
+import { Box, IconButton } from '@mui/material';
+const DepositPackageItem = ({ icon, price, name, status, form, nameForm, admin }) => {
+  if (form) {
+    form.watch(nameForm);
+  }
   return (
     <>
       <div className={clsx(styles.wrap)}>
@@ -16,7 +21,26 @@ const DepositPackageItem = ({ icon, price, name, status }) => {
             <div className={clsx(styles.price)}>{currencyFormat(price)}</div>
           </div>
         </div>
-        <StatusDeposit status={status} />
+        {admin ? (
+          <Box sx={{ display: 'flex', alignItems: 'center' }}>
+            <StatusDeposit status={status} noTooltip={admin} />
+            <IconButton
+              disableRipple
+              size="small"
+              sx={{ color: 'error.main' }}
+              onClick={() => {
+                if (status == 'paid') {
+                  form.setValue(nameForm, 'success');
+                } else if (status == 'success') {
+                  form.setValue(nameForm, 'paid');
+                }
+              }}>
+              <PublishedWithChangesOutlined />
+            </IconButton>
+          </Box>
+        ) : (
+          <StatusDeposit status={status} />
+        )}
       </div>
     </>
   );

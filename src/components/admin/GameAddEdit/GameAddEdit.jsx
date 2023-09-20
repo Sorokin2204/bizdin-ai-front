@@ -30,7 +30,7 @@ import { getParentGameList } from '../../../redux/actions/parentGame/getParentGa
 const GameAddEdit = ({ data = null }) => {
   const [showAlert, setShowAlert] = useState(false);
   const defaultValues = data
-    ? data
+    ? { ...data, packages: data?.packages?.map((pack) => ({ ...pack, packId: pack.id })) }
     : {
         packages: [
           {
@@ -55,6 +55,7 @@ const GameAddEdit = ({ data = null }) => {
     fields: packages,
     append: appendPack,
     remove: removePack,
+    update: updatePack,
   } = useFieldArray({
     control: contentForm.control,
     name: 'packages',
@@ -121,6 +122,7 @@ const GameAddEdit = ({ data = null }) => {
           <InputCustom form={contentForm} name={'slug'} label={'Путь'} />
           <InputCustom form={contentForm} name={'shortDesc'} label={'Краткое описание'} isTextarea maxRows={2} rows={3} />
         </Box>
+        <UploadImage form={contentForm} name={'whereImage'} label={'Где находится ?'} required={false} />
         <UploadImage form={contentForm} name={'iconValute'} label={'Иконка валюты'} required={false} />
         <InputCustom form={contentForm} name={'nameValute'} label={'Название валюты'} required={false} />
         <InputCustom required={false} isSelect options={[{ label: 'Не выбрано', value: null }, ...filterList?.map((filter) => ({ label: filter.name, value: filter.id }))]} form={contentForm} name={'filterGameId'} label={'Категория'} />
@@ -155,31 +157,39 @@ const GameAddEdit = ({ data = null }) => {
         </Box>
         <CodeEditor form={contentForm} name={'instruction'} label="Инструкция" />
         <CodeEditor form={contentForm} name={'desc'} label="Описание" />
-        {packages.map((fieldd, index) => (
-          <Box sx={{ border: '1px solid rgba(0,0,0,0.23)', borderRadius: '8px', padding: '8px', marginBottom: '16px' }}>
-            <Box sx={{ display: 'grid', gridTemplateColumns: '1fr auto', columnGap: '8px' }}>
-              <Box sx={{ display: 'grid' }}>
-                <InputCustom form={contentForm} name={`packages[${index}].name`} label={'Название пакета'} errorCustom={contentForm.formState?.errors?.packages?.[index]?.name} />
+        {packages?.filter((pack) => !pack?.deleted)?.length == 0 ? (
+          <Box sx={{ textAlign: 'center', fontSize: '18px', fontWeight: '600', margin: '40px 0', opacity: '0.7' }}>Нет пакетов</Box>
+        ) : (
+          packages.map(
+            (packItem, index) =>
+              !packItem?.deleted && (
+                <Box sx={{ border: '1px solid rgba(0,0,0,0.23)', borderRadius: '8px', padding: '8px', marginBottom: '16px' }}>
+                  <Box sx={{ display: 'grid', gridTemplateColumns: '1fr auto', columnGap: '8px' }}>
+                    <Box sx={{ display: 'grid' }}>
+                      <InputCustom form={contentForm} name={`packages[${index}].name`} label={'Название пакета'} errorCustom={contentForm.formState?.errors?.packages?.[index]?.name} />
 
-                <UploadImage errorCustom={contentForm.formState?.errors?.packages?.[index]?.icon} label={'Иконка пакета'} size={'80px'} font="12px" form={contentForm} name={`packages[${index}].icon`} />
-                <Box sx={{ display: 'grid', gridTemplateColumns: '1fr 1fr', columnGap: '8px' }}>
-                  <InputCustom form={contentForm} name={`packages[${index}].price`} errorCustom={contentForm.formState?.errors?.packages?.[index]?.price} isNumber label={'Цена'} />
-                  <InputCustom required={false} form={contentForm} name={`packages[${index}].discountPrice`} errorCustom={contentForm.formState?.errors?.packages?.[index]?.discountPrice} isNumber label={'Зачеркнутая цена'} />
-                  <InputCustom form={contentForm} required={false} isCheckbox name={`packages[${index}].disabled`} label={'Недоступен'} />
+                      <UploadImage errorCustom={contentForm.formState?.errors?.packages?.[index]?.icon} label={'Иконка пакета'} size={'80px'} font="12px" form={contentForm} name={`packages[${index}].icon`} />
+                      <Box sx={{ display: 'grid', gridTemplateColumns: '1fr 1fr', columnGap: '8px' }}>
+                        <InputCustom form={contentForm} name={`packages[${index}].price`} errorCustom={contentForm.formState?.errors?.packages?.[index]?.price} isNumber label={'Цена'} />
+                        <InputCustom required={false} form={contentForm} name={`packages[${index}].discountPrice`} errorCustom={contentForm.formState?.errors?.packages?.[index]?.discountPrice} isNumber label={'Зачеркнутая цена'} />
+                        <InputCustom form={contentForm} required={false} isCheckbox name={`packages[${index}].disabled`} label={'Недоступен'} />
+                      </Box>
+                    </Box>
+                    <IconButton
+                      sx={{ alignSelf: 'center' }}
+                      onClick={() => {
+                        if (packages?.length > 0) {
+                          updatePack(index, { ...packItem, deleted: true });
+                          // removePack(index);
+                        }
+                      }}>
+                      <Delete color="error" />
+                    </IconButton>
+                  </Box>
                 </Box>
-              </Box>
-              <IconButton
-                sx={{ alignSelf: 'center' }}
-                onClick={() => {
-                  if (packages?.length > 1) {
-                    removePack(index);
-                  }
-                }}>
-                <Delete color="error" />
-              </IconButton>
-            </Box>
-          </Box>
-        ))}
+              ),
+          )
+        )}
         <Button
           onClick={() => {
             appendPack({
@@ -188,6 +198,7 @@ const GameAddEdit = ({ data = null }) => {
               price: 0,
               discountPrice: 0,
               disabled: false,
+              deleted: false,
               ...(data && { gameId: data.id }),
             });
           }}

@@ -32,6 +32,12 @@ import CartAttempt from './pages/site/CartAttempt/CartAttempt';
 import Do from './pages/site/Do/Do';
 import CreateReviewPage from './pages/site/CreateReviewPage/CreateReviewPage';
 import ThankComment from './pages/site/ThankComment/ThankComment';
+import AdminCommentList from './pages/admin/AdminCommentList/AdminCommentList';
+import AdminOrderList from './pages/admin/AdminOrderList/AdminOrderList';
+import RefundPage from './pages/site/RefundPage/RefundPage';
+import EulaPage from './pages/site/EulaPage/EulaPage';
+import PrivacyPage from './pages/site/PrivacyPage/PrivacyPage';
+import AdminLogin from './pages/admin/AdminLogin/AdminLogin';
 
 function App() {
   let routes = useRoutes([
@@ -137,7 +143,22 @@ function App() {
         </AdminLayout>
       ),
     },
-
+    {
+      path: 'admin/orders',
+      element: (
+        <AdminLayout>
+          <AdminOrderList />
+        </AdminLayout>
+      ),
+    },
+    {
+      path: 'admin/comments',
+      element: (
+        <AdminLayout>
+          <AdminCommentList />
+        </AdminLayout>
+      ),
+    },
     {
       path: 'admin/games',
       element: (
@@ -195,7 +216,7 @@ function App() {
       ),
     },
     {
-      path: '/reviews',
+      path: '/feedback',
       element: (
         <SiteLayout>
           <ReviewsPage />
@@ -251,7 +272,7 @@ function App() {
       ),
     },
     {
-      path: '/topup',
+      path: '/profile/wallet/topup',
       element: (
         <SiteLayout>
           <TouUpPage />
@@ -259,7 +280,11 @@ function App() {
       ),
     },
     {
-      path: '/wallet',
+      path: '/admin/login',
+      element: <AdminLogin />,
+    },
+    {
+      path: '/profile/wallet',
       element: (
         <SiteLayout>
           <WalletPage />
@@ -285,6 +310,30 @@ function App() {
     {
       path: '/:slug',
       element: <GamePage />,
+    },
+    {
+      path: '/refund',
+      element: (
+        <SiteLayout>
+          <RefundPage />,
+        </SiteLayout>
+      ),
+    },
+    {
+      path: '/eula',
+      element: (
+        <SiteLayout>
+          <EulaPage />,
+        </SiteLayout>
+      ),
+    },
+    {
+      path: '/privacy',
+      element: (
+        <SiteLayout>
+          <PrivacyPage />,
+        </SiteLayout>
+      ),
     },
     {
       path: '/:parentSlug/:slug',

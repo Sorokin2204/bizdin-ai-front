@@ -35,6 +35,12 @@ body {
     max-width: 416px;
   }
 }
+@media (max-width: 444px) {
+  .container {
+    padding-right: 12px;
+    padding-left: 12px;
+  }
+}
 @media (min-width: 591px) {
   .container {
     max-width: 554px;
@@ -217,4 +223,7 @@ img.w-100 {
 }
 .custom-select__control {
   margin-bottom: 8px;
+}
+.law-text {
+  padding: 1rem 2rem 1rem 5rem;
 }

@@ -12,6 +12,9 @@
   left: 47%;
   transform: translate(-50%, -50%);
 }
+.fixed {
+  position: fixed !important;
+}
 .wrap {
   position: absolute;
   top: 0;

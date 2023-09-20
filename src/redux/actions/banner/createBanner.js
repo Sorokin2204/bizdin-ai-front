@@ -7,7 +7,7 @@ export const initStateCreateBanner = {
 
 export const createBanner = createAsyncThunk('banner/createBanner', async (data, { rejectWithValue, fulfillWithValue }) => {
   return await axios
-    .post(`${process.env.REACT_APP_SERVER_API}/banner/create`, data)
+    .post(`${process.env.REACT_APP_SERVER_API}/banner/create`, data, { headers: { 'auth-token': localStorage.getItem('auth-token') } })
     .then((res) => {
       return fulfillWithValue(res.data);
     })

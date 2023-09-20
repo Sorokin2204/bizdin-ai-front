@@ -15,6 +15,11 @@
   background-color: #f8f9fa;
   border-radius: 0.5rem;
 }
+@media (max-width: 764px) {
+  .block {
+    padding: 1rem;
+  }
+}
 .likeBlock {
   display: flex;
   align-items: center;
@@ -73,4 +78,21 @@
   &::after {
     background-color: #6c757d;
   }
+}
+.signIn {
+  width: 100%;
+  background-color: #f8f9fa;
+  border-radius: 0.5rem;
+  padding: 5.5rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.signInText {
+  margin: 1rem 0;
+  font-weight: 500;
+}
+.signInBtn {
+  width: min-content;
 }

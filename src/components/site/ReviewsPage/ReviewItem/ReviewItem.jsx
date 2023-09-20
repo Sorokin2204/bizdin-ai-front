@@ -2,31 +2,39 @@ import React from 'react';
 import styles from './ReviewItem.module.scss';
 import Avatar from '../../Common/Avatar/Avatar';
 import clsx from 'clsx';
-const ReviewItem = () => {
+import moment from 'moment';
+import 'moment/locale/ru';
+import { imgPath } from '../../../../utils/imgPath';
+moment.locale('ru');
+const ReviewItem = ({ user, text, createdAt, order, answer, like }) => {
   return (
     <>
-      <div className={clsx(styles.item)}>
+      <div className={clsx(styles.item, !like && styles.itemDislike)}>
         <div className={clsx(styles.head)}>
           <div className={clsx(styles.left)}>
-            <Avatar color={'red'} sm>
-              Sl
+            <Avatar color={user.color} sm>
+              {user?.name?.slice(0, 2)}
             </Avatar>
-            <div className={clsx(styles.user)}>Sitdikov</div>
+            <div className={clsx(styles.user)}>{user?.name}</div>
           </div>
-          <div className={clsx(styles.date)}>4 сентября 2023 г. в 14:42</div>
+          <div className={clsx(styles.date)}>{moment(createdAt).format('DD MMMM YYYY г. в HH:mm')}</div>
         </div>
         <div className={clsx(styles.content)}>
           <div className={clsx(styles.like)}></div>
-          <div className={clsx(styles.text)}>Здравствуйте! Донат пришел через часа 2 только. А так сайт хороший. Удивлён его работе)</div>
+          <div className={clsx(styles.text)}>{text}</div>
         </div>
-        <div className={clsx(styles.game)}>
-          <img src="../img/game-1.webp" alt="" className={clsx(styles.gameIcon)} />
-          <div className={clsx(styles.gameName)}>Mobile Legends: Bang Bang (Россия)</div>
-        </div>
-        <div className={clsx(styles.answer)}>
-          <div className={clsx(styles.answerTitle)}>Ответ</div>
-          <div className={clsx(styles.answerText)}>Если вы про то, что ваш заказ не прошел - выберите Mobile Legends Global, у вас регион на аккаунте Не Россия.</div>
-        </div>
+        {order?.game && (
+          <div className={clsx(styles.game)}>
+            <img src={imgPath(order?.game?.preview)} alt="" className={clsx(styles.gameIcon)} />
+            <div className={clsx(styles.gameName)}>{order?.game?.name}</div>
+          </div>
+        )}
+        {answer && (
+          <div className={clsx(styles.answer)}>
+            <div className={clsx(styles.answerTitle)}>Ответ</div>
+            <div className={clsx(styles.answerText)}>{answer}</div>
+          </div>
+        )}
       </div>
     </>
   );

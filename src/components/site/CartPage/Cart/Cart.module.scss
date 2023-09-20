@@ -8,7 +8,11 @@
   width: 100%;
   overflow: hidden;
 }
-
+@media (max-width: 764px) {
+  .wrap {
+    padding: 1rem;
+  }
+}
 .game {
   display: flex;
   align-items: center;
@@ -62,6 +66,11 @@
 .btn {
   width: min-content;
   margin: 1.5rem auto 2rem;
+}
+@media (max-width: 444px) {
+  .btn {
+    width: 100%;
+  }
 }
 .changeBtn {
   display: flex;

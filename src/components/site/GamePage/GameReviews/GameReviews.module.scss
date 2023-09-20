@@ -40,6 +40,20 @@
 }
 .rating {
   font-size: 14px;
+  font-weight: 600;
+  & span {
+    font-weight: 400;
+  }
+}
+@media (max-width: 591px) {
+  .rating {
+    & span {
+      display: none;
+    }
+  }
+  .link {
+    font-size: 14px;
+  }
 }
 .count {
   color: #6c757d;

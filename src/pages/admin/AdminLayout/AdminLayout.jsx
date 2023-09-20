@@ -21,6 +21,9 @@ import { ExitToApp } from '@mui/icons-material';
 import { Button } from '@mui/material';
 import axios from 'axios';
 import { apiUrl } from '../../../utils/apiUrl';
+import { useDispatch } from 'react-redux';
+import { authAdmin } from '../../../redux/actions/user/authAdmin';
+import { useSelector } from 'react-redux';
 
 const drawerWidth = 240;
 const getTitlePage = (path) => {
@@ -57,16 +60,40 @@ const AdminLayout = (props) => {
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const location = useLocation();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const {
+    authAdmin: { data: authData, error: authError },
+  } = useSelector((state) => state.user);
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
-  console.log(location);
+  React.useEffect(() => {
+    dispatch(authAdmin());
+  }, []);
+
   const drawer = (
     <div>
       <Toolbar />
       <Divider />
       <List>
-        {' '}
+        <ListItem key={1} disablePadding>
+          <ListItemButton
+            onClick={() => {
+              navigate('/admin/comments');
+            }}
+            selected={location.pathname == '/admin/comments'}>
+            <ListItemText primary={'Отзывы'} />
+          </ListItemButton>
+        </ListItem>
+        <ListItem key={1} disablePadding>
+          <ListItemButton
+            onClick={() => {
+              navigate('/admin/orders');
+            }}
+            selected={location.pathname == '/admin/orders'}>
+            <ListItemText primary={'Покупки'} />
+          </ListItemButton>
+        </ListItem>
         <ListItem key={1} disablePadding>
           <ListItemButton
             onClick={() => {
@@ -106,27 +133,11 @@ const AdminLayout = (props) => {
       </List>
     </div>
   );
-  const [verifyRequest, setVerifyRequest] = React.useState({ data: true });
-  React.useEffect(() => {
-    // if (localStorage.getItem('token')) {
-    //   axios
-    //     .get(apiUrl('verify'), { headers: { request_token: localStorage.getItem('token') } })
-    //     .then((res) => {
-    //       setVerifyRequest({ loading: false, data: true });
-    //     })
-    //     .catch(() => {
-    //       setVerifyRequest({ loading: false, error: true });
-    //       navigate('/admin/login');
-    //     });
-    // } else {
-    //   navigate('/admin/login');
-    // }
-  }, []);
 
   const container = window !== undefined ? () => window().document.body : undefined;
 
   return (
-    verifyRequest?.data && (
+    authData && (
       <Box sx={{ display: 'flex' }}>
         <CssBaseline />
         <AppBar

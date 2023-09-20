@@ -14,7 +14,7 @@ const NavbarRight = () => {
   return (
     <>
       <div className={clsx(styles.wrap)}>
-        {loadingAuth || (!dataAuth && !errorAuth) ? (
+        {loadingAuth ? (
           <></>
         ) : (
           <>
