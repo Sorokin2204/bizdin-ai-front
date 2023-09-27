@@ -1,0 +1,25 @@
+.tagsBox {
+  background-color: var(--bg-3);
+  padding: 20px 24px 24px 24px;
+  position: sticky;
+  top: 0;
+  left: 0;
+}
+.wrap {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  overflow: scroll;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+.sidebarWrap {
+  padding: 20px 16px 20px 22px;
+  overflow: scroll;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+.selectWrap {
+  margin-bottom: 40px;
+}

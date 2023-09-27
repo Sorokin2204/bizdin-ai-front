@@ -1,0 +1,40 @@
+.switch {
+  width: 48px;
+  height: 24.5px;
+  border-radius: 24px;
+  background-color: var(--text-3);
+  position: relative;
+  padding: 2px;
+  transition: all 0.3s;
+  &::after {
+    content: '';
+    display: block;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: var(--text-2);
+    position: absolute;
+    top: 49%;
+    left: 3px;
+    transform: translateY(-50%);
+    transition: all 0.3s;
+  }
+}
+.switchActive {
+  background-color: var(--primary-2);
+  &::after {
+    left: 26px;
+  }
+}
+.wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.label {
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  color: var(--text);
+}

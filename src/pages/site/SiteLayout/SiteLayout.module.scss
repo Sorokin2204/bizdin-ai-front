@@ -1,6 +1,12 @@
 .wrap {
-  background: #e9ecef;
+  display: grid;
+  grid-template-columns: auto 1fr;
   min-height: 100vh;
+  background-color: var(--bg-1);
 }
-.container {
+
+.left {
+}
+.right {
+  padding: 16px 25px 16px 0;
 }

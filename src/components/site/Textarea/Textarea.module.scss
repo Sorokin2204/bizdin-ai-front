@@ -1,0 +1,31 @@
+.label {
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  color: var(--text-2);
+  margin-bottom: 20px;
+}
+.input {
+  height: 312px;
+  resize: none;
+  outline: none;
+  background-color: transparent;
+
+  display: flex;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  color: var(--text-2);
+  border-radius: 5px;
+  padding: 12px;
+  border: 1px solid var(--bg-4);
+  position: relative;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  &::placeholder {
+    color: var(--bg-4);
+  }
+}

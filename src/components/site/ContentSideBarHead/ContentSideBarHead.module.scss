@@ -1,0 +1,24 @@
+.wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 26.5px 25px 20.5px 24px;
+  //   border-bottom: 1px solid var(--border);
+  height: 75px;
+}
+.title {
+  color: var(--text);
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+.icon {
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  min-height: 32px;
+  background-color: var(--text);
+  mask-size: contain;
+  mask-image: url(../../../../public/img/on.svg);
+}

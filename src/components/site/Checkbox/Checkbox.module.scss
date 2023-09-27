@@ -1,0 +1,41 @@
+.wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.label {
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px; /* 171.429% */
+  letter-spacing: -0.14px;
+  color: var(--text-3);
+}
+.checkbox {
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  background: var(--text-3);
+  position: relative;
+  &:after {
+    content: '';
+    display: block;
+    background-image: url(../../../../public/img/checkbox.svg);
+    background-size: contain;
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+.checkboxActive {
+  &::after {
+    opacity: 1;
+    visibility: visible;
+  }
+}

@@ -1,0 +1,50 @@
+.wrap {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  padding: 20px 24px;
+}
+.content {
+  height: calc(100vh - 197px);
+  overflow: scroll;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+.inputBlock {
+  align-items: center;
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: auto 1fr auto;
+  padding: 8px 14px;
+  border-radius: 17px;
+  border: 1px solid var(--dark-text);
+}
+.attach {
+  width: 24px;
+  height: 24px;
+  mask-image: url(../../../../public/img/add-circle.svg);
+  background-color: var(--text);
+  mask-size: contain;
+}
+.input {
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 32px;
+  letter-spacing: -0.32px;
+  &::placeholder {
+    color: var(--grey-text);
+  }
+  color: var(--text);
+}
+.atom {
+  width: 24px;
+  height: 24px;
+  mask-image: url(../../../../public/img/atom.svg);
+  background-color: var(--text);
+  mask-size: contain;
+}

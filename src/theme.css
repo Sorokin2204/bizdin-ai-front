@@ -1,0 +1,21 @@
+:root {
+  --bg-1: #141718;
+  --bg-2: #35393a;
+  --bg-3: #232627;
+  --bg-4: #343839;
+  --text: #fff;
+  --text-2: #fefefe;
+  --text-3: #e8ecef;
+  --text-3-opacity: #e8ecef80;
+  --dark-text: #6f767e;
+  --grey-text: #6c7275;
+  --grey-text-opacity: #6c727580;
+  --bg-card: #1d2428;
+  --disabled: #4f5558;
+  --icon: #33363f;
+  --divider: #c4c4c4;
+  --primary: #8e55ea;
+  --border: #323637;
+  --primary-2: #ad00ff;
+  --primary-bg: rgba(144, 104, 208, 0.2);
+}

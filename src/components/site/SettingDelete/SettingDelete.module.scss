@@ -1,0 +1,21 @@
+.wrap {
+}
+.title {
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 40px; /* 142.857% */
+  letter-spacing: -0.28px;
+  color: var(--text-2);
+  margin-bottom: 32px;
+}
+.text {
+  font-family: 'Montserrat';
+  margin-bottom: 24px;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px; /* 166.667% */
+  letter-spacing: -0.24px;
+  color: var(--grey-text);
+}

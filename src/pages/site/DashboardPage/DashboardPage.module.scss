@@ -1,0 +1,10 @@
+.wrap {
+  padding: 20px 16px 0 24px;
+  overflow: scroll;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+.line {
+  margin-bottom: 40px;
+}

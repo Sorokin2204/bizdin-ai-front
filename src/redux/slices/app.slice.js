@@ -1,32 +1,42 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { initStateGetCountryList, reducerGetCountryList } from '../actions/app/getCountryList';
-import { initStateGetFilterGameList, reducerGetFilterGameList } from '../actions/app/getFilterGameList';
-import { initStateGetTypePaymentList, reducerGetTypePaymentList } from '../actions/app/getTypePayment';
 
 export const initialState = {
-  ...initStateGetCountryList,
-  ...initStateGetFilterGameList,
-  ...initStateGetTypePaymentList,
-  activeFilter: null,
-  activePayment: null,
+  theme: 'dark',
+  activeSmartBlock: 'SWOT',
+  activeSmartView: 'grid',
+  showUserModal: false,
+  activeSettingOption: 'Edit profile',
+  activeLang: 'English',
+  collapseLeftSideBar: false,
 };
 
 export const appSlice = createSlice({
   name: 'app',
   initialState,
   reducers: {
-    setActiveFilter(state, action) {
-      state.activeFilter = action.payload;
+    setTheme(state, action) {
+      state.theme = action.payload;
     },
-    setActivePayment(state, action) {
-      state.activePayment = action.payload;
+    setActiveSmartBlock(state, action) {
+      state.activeSmartBlock = action.payload;
+    },
+    setActiveSmartView(state, action) {
+      state.activeSmartView = action.payload;
+    },
+    setShowUserModal(state, action) {
+      state.showUserModal = action.payload;
+    },
+    setActiveSettingOption(state, action) {
+      state.activeSettingOption = action.payload;
+    },
+    setActiveLang(state, action) {
+      state.activeLang = action.payload;
+    },
+    setCollapseLeftSideBar(state, action) {
+      state.collapseLeftSideBar = action.payload;
     },
   },
-  extraReducers: {
-    ...reducerGetCountryList,
-    ...reducerGetFilterGameList,
-    ...reducerGetTypePaymentList,
-  },
+  extraReducers: {},
 });
-export const { setActiveFilter, setActivePayment } = appSlice.actions;
+export const { setTheme, setActiveSmartBlock, setActiveSmartView, setShowUserModal, setActiveSettingOption, setActiveLang, setCollapseLeftSideBar } = appSlice.actions;
 export const appReducer = appSlice.reducer;

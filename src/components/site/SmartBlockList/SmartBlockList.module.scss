@@ -1,0 +1,9 @@
+.list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  padding: 26px 24px;
+  grid-gap: 24px;
+}
+.listViewInline {
+  grid-template-columns: 1fr !important;
+}
