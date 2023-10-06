@@ -8,6 +8,10 @@ export const initialState = {
   activeSettingOption: 'Edit profile',
   activeLang: 'English',
   collapseLeftSideBar: false,
+  collapseRightSideBar: false,
+  showSwipeBottom: false,
+  showLeftMenu: false,
+  showStepModal: false,
 };
 
 export const appSlice = createSlice({
@@ -35,8 +39,20 @@ export const appSlice = createSlice({
     setCollapseLeftSideBar(state, action) {
       state.collapseLeftSideBar = action.payload;
     },
+    setCollapseRightSideBar(state, action) {
+      state.collapseRightSideBar = action.payload;
+    },
+    setShowSwipeBottom(state, action) {
+      state.showSwipeBottom = action.payload;
+    },
+    setShowLeftMenu(state, action) {
+      state.showLeftMenu = action.payload;
+    },
+    setShowStepModal(state, action) {
+      state.showStepModal = action.payload;
+    },
   },
   extraReducers: {},
 });
-export const { setTheme, setActiveSmartBlock, setActiveSmartView, setShowUserModal, setActiveSettingOption, setActiveLang, setCollapseLeftSideBar } = appSlice.actions;
+export const { setTheme, setActiveSmartBlock, setActiveSmartView, setShowUserModal, setActiveSettingOption, setActiveLang, setCollapseLeftSideBar, setCollapseRightSideBar, setShowSwipeBottom, setShowLeftMenu, setShowStepModal } = appSlice.actions;
 export const appReducer = appSlice.reducer;

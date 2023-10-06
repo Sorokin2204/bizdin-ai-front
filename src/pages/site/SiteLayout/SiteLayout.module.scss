@@ -10,3 +10,16 @@
 .right {
   padding: 16px 25px 16px 0;
 }
+@media (max-width: 1024px) {
+  .wrap {
+    grid-template-columns: 1fr;
+    padding-bottom: var(--nav-h);
+  }
+  .left {
+    order: 2;
+  }
+  .right {
+    padding: 0;
+    order: 1;
+  }
+}

@@ -4,7 +4,7 @@
   border-radius: 30px;
   border: 1px solid var(--bg-2);
   background: var(--bg-3);
-  height: calc(100vh - 32px);
+  height: calc(100vh - var(--nav-h));
   position: relative;
   &::after {
     content: '';
@@ -21,15 +21,32 @@
 .left {
   display: grid;
   grid-template-rows: 75px 1fr;
-  height: calc(100vh - 32px);
+  height: calc(100vh - var(--nav-h));
 }
 
 .btnBox {
   padding: 18px 16px 20px 23px;
+  align-items: flex-end;
+  display: flex;
+  margin-top: auto;
 }
 .right {
-  height: calc(100vh - 32px);
+  height: calc(100vh - var(--nav-h));
   display: grid;
   grid-template-rows: 75px 1fr auto;
   border-left: 1px solid var(--bg-2);
+}
+@media (max-width: 1024px) {
+  .wrap {
+    grid-template-columns: 1fr;
+    border-radius: 0;
+    border: none;
+    &::after {
+      top: 49px;
+      border-color: transparent;
+    }
+  }
+  .left {
+    grid-template-rows: 52px 1fr;
+  }
 }

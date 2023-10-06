@@ -5,6 +5,7 @@ import Select from '../../../components/site/Select/Select';
 import Switch from '../../../components/site/Switch/Switch';
 import Textarea from '../../../components/site/Textarea/Textarea';
 import clsx from 'clsx';
+import Chart from '../../../components/site/Chart/Chart';
 const DashboardPage = () => {
   return (
     <>
@@ -12,7 +13,7 @@ const DashboardPage = () => {
       <ContentBlock
         leftTitle={'Add a new chart'}
         title={'Dashboard'}
-        left={<></>}
+        left={<>{/* <Chart /> */}</>}
         right={
           <div className={clsx(styles.wrap)}>
             <div className={clsx(styles.line)}>

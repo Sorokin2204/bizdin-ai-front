@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './ChatPreview.module.scss';
 import clsx from 'clsx';
+import AnimateHeight from 'react-animate-height';
 const ChatPreview = () => {
   const dataList = [
     {

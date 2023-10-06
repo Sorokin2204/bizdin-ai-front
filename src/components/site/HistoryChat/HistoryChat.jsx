@@ -1,22 +1,27 @@
 import React, { useState } from 'react';
 import styles from './HistoryChat.module.scss';
 import clsx from 'clsx';
-const HistoryChat = () => {
+const dataHistory = [
+  {
+    group: 'June',
+    list: ['New chat', 'New chat', 'New chat'],
+  },
+  {
+    group: 'May',
+    list: ['New chat', 'New chat', 'New chat'],
+  },
+  {
+    group: 'September',
+    list: ['New chat', 'New chat', 'New chat'],
+  },
+];
+const HistoryChat = ({ list = dataHistory }) => {
   const [active, setActive] = useState(null);
-  const dataHistory = [
-    {
-      group: 'June',
-      list: ['New chat', 'New chat', 'New chat'],
-    },
-    {
-      group: 'May',
-      list: ['New chat', 'New chat', 'New chat'],
-    },
-  ];
+
   return (
     <>
       <div className={clsx(styles.list)}>
-        {dataHistory?.map((itemHistory, indexHistory) => (
+        {list?.map((itemHistory, indexHistory) => (
           <>
             <div className={clsx(styles.group)}>{itemHistory?.group}</div>
             {itemHistory?.list?.map((item, indexItem) => (

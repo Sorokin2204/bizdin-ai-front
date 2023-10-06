@@ -7,3 +7,23 @@
   color: var(--text-2);
   margin-bottom: 32px;
 }
+.wrap {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.btnBox {
+  margin-top: auto;
+  padding-top: 32px;
+}
+@media (max-width: 1024px) {
+  .title {
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 40px; /* 200% */
+    letter-spacing: -0.2px;
+    margin-bottom: 8px;
+  }
+}

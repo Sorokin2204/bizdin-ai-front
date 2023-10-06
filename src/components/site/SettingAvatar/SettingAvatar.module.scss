@@ -10,7 +10,7 @@
 .wrap {
   display: flex;
   align-items: center;
-  margin-bottom: 24px;
+  // margin-bottom: 24px;
 }
 .left {
 }
@@ -40,4 +40,17 @@
   font-weight: 500;
   line-height: 20px;
   letter-spacing: -0.24px;
+}
+@media (max-width: 1024px) {
+  .text {
+    max-width: 190px;
+  }
+  .btn {
+    padding: 11px 23px;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 24px; /* 171.429% */
+    letter-spacing: -0.28px;
+  }
 }

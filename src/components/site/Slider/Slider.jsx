@@ -18,7 +18,6 @@ const Slider = ({ list }) => {
         ))}
       </div>
       <div className={clsx(styles.dots)}>
-        {/* <div className={clsx(styles.dotActive)}></div> */}
         {list?.map((item, indexItem) => (
           <div
             className={clsx(styles.dot, active == indexItem && styles.dotActive)}

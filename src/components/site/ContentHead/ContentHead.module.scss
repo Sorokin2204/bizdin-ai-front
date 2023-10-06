@@ -29,6 +29,17 @@
   background-color: var(--text);
   mask-size: contain;
 }
+.burgerWrap {
+  width: 92px;
+}
+.iconBurger {
+  mask-image: url(../../../../public/img/menu.svg);
+  background-color: var(--primary-2);
+}
+.iconAdd {
+  mask-image: url(../../../../public/img/add.svg);
+  background-color: var(--primary-2);
+}
 .iconLamp {
   mask-image: url(../../../../public/img/lamp.svg);
   background-color: #f2c94c;
@@ -66,4 +77,22 @@
 }
 .smartViewList {
   mask-image: url(../../../../public/img/list.svg);
+}
+@media (max-width: 1024px) {
+  .wrap {
+    height: 52px;
+    padding: 10px 24px 8px 24px;
+    background-color: var(--bg-1);
+  }
+  .left {
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 33.984px; /* 169.92% */
+  }
+  .iconItem {
+    & + & {
+      margin-left: 10px;
+    }
+  }
 }

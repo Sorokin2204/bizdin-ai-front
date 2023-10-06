@@ -5,25 +5,56 @@ import ContentSideBarHead from '../ContentSideBarHead/ContentSideBarHead';
 import clsx from 'clsx';
 import Button from '../Button/Button';
 import { useSelector } from 'react-redux';
-const ContentBlock = ({ left, right, title, leftTitle, buttonProps }) => {
+import { useMediaQuery } from '../../../utils/useMediaQuery';
+import SwipeBottom from '../SwipeBottom/SwipeBottom';
+import MenuLeft from '../MenuLeft/MenuLeft';
+const ContentBlock = ({ onAddMobile, leftMenu, left, right, title, leftTitle, buttonProps }) => {
   const { collapseLeftSideBar } = useSelector((state) => state.app);
+  const isMobile = useMediaQuery('(max-width: 1024px)');
   return (
     <>
       <div className={clsx(styles.wrap)}>
         <div className={clsx(styles.left)}>
-          <ContentHead title={title} />
+          <ContentHead title={title} onAddMobile={onAddMobile} />
           {left}
         </div>
-        <div className={clsx(styles.right)}>
-          <ContentSideBarHead title={leftTitle} />
 
-          {right}
-          <div className={clsx(styles.btnBox)}>
-            <Button icon={buttonProps.icon} onClick={buttonProps.onClick}>
-              {buttonProps.text}
-            </Button>
+        {isMobile ? (
+          <>
+            <SwipeBottom>
+              {' '}
+              {right}
+              <div className={clsx(styles.btnBox)}>
+                <Button icon={buttonProps.icon} onClick={buttonProps.onClick}>
+                  {buttonProps.text}
+                </Button>
+              </div>
+            </SwipeBottom>
+            <MenuLeft
+              button={
+                buttonProps.inLeftMenu && (
+                  <Button icon={buttonProps.leftMenuIcon || buttonProps.icon} onClick={buttonProps.onClickLeftMenu}>
+                    {buttonProps.leftMenuText || buttonProps.text}
+                  </Button>
+                )
+              }>
+              {leftMenu}
+            </MenuLeft>
+          </>
+        ) : (
+          <div className={clsx(styles.right)}>
+            <>
+              <ContentSideBarHead title={leftTitle} />
+
+              {right}
+              <div className={clsx(styles.btnBox)}>
+                <Button icon={buttonProps.icon} onClick={buttonProps.onClick}>
+                  {buttonProps.text}
+                </Button>
+              </div>
+            </>{' '}
           </div>
-        </div>
+        )}
       </div>
     </>
   );

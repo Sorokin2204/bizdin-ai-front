@@ -3,8 +3,11 @@ import styles from './SmartBlockList.module.scss';
 import SmartBlock from '../SmartBlock/SmartBlock';
 import { useSelector } from 'react-redux';
 import clsx from 'clsx';
+import { useMediaQuery } from '../../../utils/useMediaQuery';
 const SmartBlockList = () => {
   const { activeSmartBlock, activeSmartView } = useSelector((state) => state.app);
+  const isMobile = useMediaQuery('(max-width: 1024px)');
+
   const getSmartBlocks = () => {
     switch (activeSmartBlock) {
       case 'SWOT':
@@ -55,10 +58,10 @@ const SmartBlockList = () => {
   };
   return (
     <>
-      <div className={clsx(styles.list, activeSmartView == 'list' && styles.listViewInline)}>
+      <div className={clsx(styles.list, (activeSmartView == 'list' || isMobile) && styles.listViewInline)}>
         {' '}
         {getSmartBlocks()?.map((item) => (
-          <SmartBlock title={item?.label} height={item?.height} gridColumn={activeSmartView == 'list' ? '1/2' : item?.gridColumn} />
+          <SmartBlock title={item?.label} height={item?.height} gridColumn={activeSmartView == 'list' || isMobile ? '1/2' : item?.gridColumn} />
         ))}
       </div>
     </>

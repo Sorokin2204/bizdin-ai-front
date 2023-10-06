@@ -4,9 +4,11 @@ import clsx from 'clsx';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { setActiveSettingOption } from '../../../redux/slices/app.slice';
+import { useMediaQuery } from '../../../utils/useMediaQuery';
 const SettingMenu = () => {
   const { activeSettingOption } = useSelector((state) => state.app);
   const dispatch = useDispatch();
+  const isMobile = useMediaQuery('(max-width: 1024px)');
   const data = [
     {
       icon: './img/account.svg',
@@ -41,7 +43,8 @@ const SettingMenu = () => {
   return (
     <>
       <div className={clsx(styles.list)}>
-        <div className={clsx(styles.itemActiveBorder, activeSettingOption == 'Delete account' && styles.itemActiveBorderDelete)} style={{ top: `${(activeSettingOption == 'Delete account' ? 47.3 : 40 + 4) * data?.findIndex((item) => item?.label == activeSettingOption) + 1}px` }}></div>
+        {!isMobile && <div className={clsx(styles.itemActiveBorder, activeSettingOption == 'Delete account' && styles.itemActiveBorderDelete)} style={{ top: `${(activeSettingOption == 'Delete account' ? 47.3 : 40 + 4) * data?.findIndex((item) => item?.label == activeSettingOption) + 1}px` }}></div>}
+
         {data?.map((item) => (
           <>
             {item?.delete && <div className={clsx(styles.divider)}></div>}

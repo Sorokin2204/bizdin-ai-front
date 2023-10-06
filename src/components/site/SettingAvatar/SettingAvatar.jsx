@@ -3,7 +3,7 @@ import styles from './SettingAvatar.module.scss';
 import clsx from 'clsx';
 const SettingAvatar = () => {
   return (
-    <>
+    <div>
       <div className={clsx(styles.label)}>Avatar</div>
       <div className={clsx(styles.wrap)}>
         <div className={clsx(styles.left)}>
@@ -16,7 +16,7 @@ const SettingAvatar = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

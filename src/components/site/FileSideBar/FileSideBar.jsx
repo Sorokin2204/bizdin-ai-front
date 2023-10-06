@@ -2,15 +2,14 @@ import React from 'react';
 import styles from './FileSideBar.module.scss';
 import Tags from '../Tags/Tags';
 import clsx from 'clsx';
+import { useMediaQuery } from '../../../utils/useMediaQuery';
 const FileSideBar = () => {
   const list = ['File 2', 'File 2', 'File 2'];
-
+  const isMobile = useMediaQuery('(max-width: 1024px)');
   return (
     <>
       <div className={clsx(styles.wrap)}>
-        <div className={clsx(styles.tags)}>
-          <Tags list={list} />
-        </div>
+        <div className={clsx(styles.tags)}>{!isMobile && <Tags list={list} />}</div>
 
         <div className={clsx(styles.imgList)}>
           {' '}

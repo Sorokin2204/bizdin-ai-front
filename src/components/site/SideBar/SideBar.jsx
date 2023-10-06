@@ -7,6 +7,44 @@ import { useDispatch } from 'react-redux';
 import { setCollapseLeftSideBar, setShowUserModal } from '../../../redux/slices/app.slice';
 import { CSSTransition } from 'react-transition-group';
 import { useSelector } from 'react-redux';
+import { useMediaQuery } from '../../../utils/useMediaQuery';
+export const dataMenu = [
+  {
+    icon: './img/dashboard.svg',
+    label: 'Dashboard',
+    mobileLabel: 'Dashboard',
+    mobileOrder: 1,
+    slug: '/dashboard',
+  },
+  {
+    icon: './img/chat.svg',
+    label: 'Chats',
+    mobileLabel: 'Chats',
+    mobileOrder: 3,
+    slug: '/chats',
+  },
+  {
+    icon: './img/file.svg',
+    label: 'Files',
+    mobileLabel: 'Files',
+    mobileOrder: 2,
+    slug: '/files',
+  },
+  {
+    icon: './img/road-finish.svg',
+    label: 'Brainstorming',
+    mobileLabel: 'Brain',
+    mobileOrder: 4,
+    slug: '/brainstorming',
+  },
+  {
+    icon: './img/table-setting.svg',
+    label: 'Smart Tools',
+    mobileLabel: 'Tools',
+    mobileOrder: 5,
+    slug: '/smart-tools',
+  },
+];
 const SideBar = () => {
   const [theme, setTheme] = useState(false);
   const { pathname } = useLocation();
@@ -15,33 +53,7 @@ const SideBar = () => {
   const nodeRef = useRef(null);
 
   const { collapseLeftSideBar } = useSelector((state) => state.app);
-  const dataMenu = [
-    {
-      icon: './img/dashboard.svg',
-      label: 'Dashboard',
-      slug: '/dashboard',
-    },
-    {
-      icon: './img/chat.svg',
-      label: 'Chats',
-      slug: '/chats',
-    },
-    {
-      icon: './img/file.svg',
-      label: 'Files',
-      slug: '/files',
-    },
-    {
-      icon: './img/road-finish.svg',
-      label: 'Brainstorming',
-      slug: '/brainstorming',
-    },
-    {
-      icon: './img/table-setting.svg',
-      label: 'Smart Tools',
-      slug: '/smart-tools',
-    },
-  ];
+
   const dataChat = [
     { color: '#33363F', label: 'Hello world' },
     { color: '#EE786C', label: 'Top 10 countries in ...' },

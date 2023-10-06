@@ -8,3 +8,8 @@
 .line {
   margin-bottom: 40px;
 }
+@media (max-width: 1024px) {
+  .wrap {
+    background-color: var(--bg-1);
+  }
+}

@@ -12,7 +12,9 @@ const SettingEditProfile = () => {
         <SettingAvatar />
         <InputMain label={'Name'} placeholder={'Username or email'} icon={'./img/account.svg'} />
         <InputMain label={'Location'} placeholder={'Location'} icon={'./img/location.svg'} />
-        <Button style={{ marginTop: '32px', borderRadius: '12px' }}>Save changes</Button>
+        <div className={clsx(styles.btnBox)}>
+          <Button style={{ borderRadius: '12px' }}>Save changes</Button>
+        </div>
       </div>
     </>
   );

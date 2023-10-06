@@ -1,0 +1,114 @@
+.wrap {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 100vh;
+  z-index: 10000000;
+  display: flex;
+  align-items: flex-end;
+  backdrop-filter: blur(0px);
+  transition: all 0.3s;
+  pointer-events: none;
+}
+.wrapActive {
+  backdrop-filter: blur(4px);
+  pointer-events: auto;
+  & .close {
+    visibility: visible;
+    opacity: 1;
+    transition-delay: 0.3s;
+  }
+}
+.close {
+  display: block;
+  width: 37px;
+  height: 37px;
+  background-color: var(--text-2);
+  position: absolute;
+  mask-image: url(../../../../public/img/close-circle.svg);
+  mask-size: contain;
+  margin-left: auto;
+  margin-right: 10px;
+  margin-bottom: -37px;
+  top: 16px;
+  left: 316px;
+  // left: 50%;
+  // transform: translateX(-50%);
+  cursor: pointer;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.3s;
+  transition-delay: 0s;
+}
+.box {
+  height: calc(100% - 88px);
+}
+.boxWithBtn {
+  height: calc(100% - 184px);
+}
+.content {
+  transition: all 0.3s;
+  border-radius: 0 25px 25px 0px;
+  width: auto;
+  height: 100vh;
+  min-width: 300px;
+  max-width: 70vw;
+  overflow: scroll;
+  background-color: var(--bg-1);
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  transform: translateX(-100%);
+}
+.btnBox {
+  padding: 24px;
+}
+.contentActive {
+  transform: translateX(0%);
+}
+.profile {
+  position: relative;
+  //   margin-top: 100px;
+  display: flex;
+  align-items: center;
+  padding: 32px 16px;
+  background-color: var(--bg-3);
+  position: sticky;
+  bottom: 0;
+  left: 0;
+}
+.profileWrap {
+  display: flex;
+  align-items: center;
+}
+.avatar {
+  transition: all 0.3s;
+  width: 24px;
+  height: 24px;
+  border-radius: 36px;
+  margin-right: 10px;
+}
+.name {
+  white-space: nowrap;
+  transition: all 0.3s;
+  color: var(--text);
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 22px; /* 216.667% */
+  letter-spacing: 0.24px;
+}
+.setting {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: calc(100% - 48px);
+  mask-image: url(../../../../public/img/setting.svg);
+  background-color: var(--text-2);
+  min-width: 24px;
+  min-height: 24px;
+  margin-left: auto;
+  transition: all 0.3s;
+}

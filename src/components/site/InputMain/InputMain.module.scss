@@ -1,7 +1,7 @@
 .wrap {
   border-radius: 12px;
   background-color: var(--bg-3);
-  padding: 14px 16px;
+  padding: 11px 16px;
   border: 2px solid transparent;
   display: flex;
   align-items: center;
@@ -9,14 +9,16 @@
   transition: all 0.3s;
 }
 .icon {
-  width: 20px;
+  min-width: 20px;
   height: 20px;
   background-color: var(--grey-text-opacity);
   mask-size: contain;
+  mask-repeat: no-repeat;
   margin-right: 14px;
   transition: all 0.3s;
 }
 .input {
+  font-family: 'Inter' !important;
   color: var(--text-3);
   background-color: transparent;
   border: none;
@@ -82,4 +84,11 @@
   line-height: 24px; /* 171.429% */
   letter-spacing: -0.14px;
   color: var(--grey-text-opacity);
+}
+
+@media (max-width: 1024px) {
+  .wrap {
+    background-color: var(--bg-1);
+    border-color: var(--bg-1);
+  }
 }

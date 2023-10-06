@@ -60,3 +60,14 @@
     background-color: var(--text-2);
   }
 }
+@media (max-width: 1024px) {
+  .list {
+    margin-top: 70px;
+  }
+  .item {
+    color: var(--text);
+  }
+  .icon {
+    background-color: var(--text);
+  }
+}

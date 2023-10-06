@@ -66,3 +66,10 @@
   margin-top: 12px;
   transition: color 0.3s;
 }
+@media (max-width: 1024px) {
+  .item {
+    & + & {
+      margin-left: 9px;
+    }
+  }
+}

@@ -6,6 +6,7 @@
   background-color: var(--primary-2);
   width: 100%;
   height: 48px;
+  min-height: 48px;
   border: none;
   outline: none;
   color: var(--text);
@@ -14,6 +15,7 @@
   font-weight: 500;
   line-height: 24px; /* 150% */
   letter-spacing: -0.32px;
+  cursor: pointer;
 }
 .icon {
   content: '';

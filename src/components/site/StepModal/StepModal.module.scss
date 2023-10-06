@@ -1,0 +1,142 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1040;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(5px);
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.3s;
+}
+.overlayActive {
+  visibility: visible;
+  opacity: 1;
+}
+.modalActive {
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+.modal {
+  z-index: 1100;
+  width: 100%;
+  max-width: 768px;
+  height: 100%;
+  max-height: calc(100vh - 48px);
+  background: var(--bg-1);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 24px;
+  box-shadow: 0px 33px 32px -16px rgba(0, 0, 0, 0.1), 0px 0px 32px 4px rgba(0, 0, 0, 0.04);
+  padding: 48px;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.3s;
+  & * {
+    font-family: 'Inter';
+  }
+  & button {
+    font-family: 'Inter' !important;
+  }
+}
+.content {
+  height: 100%;
+  overflow: scroll;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+.close {
+  width: 24px;
+  height: 24px;
+  mask-image: url(../../../../public/img/close-thin.svg);
+  background-color: var(--text-2);
+  mask-size: contain;
+  position: absolute;
+  top: 24px;
+  right: 24px;
+}
+.head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 48px;
+  padding-bottom: 48px;
+}
+.title {
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px; /* 75% */
+  letter-spacing: -0.64px;
+  color: var(--text);
+}
+.step {
+  color: var(--grey-text);
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px; /* 100% */
+  letter-spacing: -0.48px;
+}
+.content {
+}
+.frame {
+  border-radius: 24px;
+  width: 100%;
+  background-color: #2a2a2a;
+  height: 100%;
+  aspect-ratio: 16 / 9;
+  position: relative;
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    mask-image: url(../../../../public/img/play.svg);
+    mask-size: contain;
+    background-color: #d9d9d9;
+    width: 30px;
+    height: 36px;
+    mask-repeat: no-repeat;
+    transition: all 0.3s;
+  }
+  &:hover {
+    &::after {
+      transform: translate(-50%, -50%) scale(1.3);
+    }
+  }
+}
+.dots {
+  margin: 0 auto;
+  padding-top: 48px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dot {
+  width: 20px;
+  height: 20px;
+  background-color: var(--text);
+  border-radius: 50%;
+  & + & {
+    margin-left: 10px;
+  }
+  transition: all 0.3s;
+}
+.dotActive {
+  width: 60px;
+  height: 20px;
+  border-radius: 42px;
+  background-color: var(--primary-2);
+}

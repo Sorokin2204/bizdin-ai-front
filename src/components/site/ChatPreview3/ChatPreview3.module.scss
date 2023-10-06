@@ -1,0 +1,128 @@
+.wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  padding: 42px 0;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.4s;
+}
+.wrapActive {
+  visibility: visible;
+  opacity: 1;
+}
+.title {
+  text-align: center;
+  color: var(--text);
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 64px; /* 177.778% */
+  letter-spacing: -1.44px;
+}
+.text {
+  text-align: center;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 36px; /* 180% */
+  letter-spacing: -0.4px;
+  color: var(--grey-text);
+  margin-bottom: 70px;
+}
+.list {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fill, minmax(auto, 232px));
+  width: 100%;
+  column-gap: 20px;
+  row-gap: 16px;
+}
+.item {
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  width: 100%;
+  aspect-ratio: 1/ 1;
+  border-radius: 30px;
+  padding: 20px;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  color: #fff;
+  transform: scale(1);
+  &:hover {
+    .itemIcon {
+      transform: scale(1.2);
+    }
+  }
+}
+.itemWhite {
+  color: #000;
+  & .itemIconWrap {
+    background: rgba(0, 0, 0, 0.09) !important;
+  }
+}
+.itemIcon {
+  width: 32px;
+  height: 32px;
+  background-size: contain;
+  transition: transform 0.3s;
+}
+.itemIconWrap {
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 55px;
+  height: 55px;
+  background: rgba(255, 255, 255, 0.54);
+}
+.itemText {
+}
+@media (max-width: 1024px) {
+  .wrap {
+    padding: 0;
+  }
+  .title {
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 64px; /* 266.667% */
+    letter-spacing: -0.96px;
+  }
+  .text {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 26.5px; /* 165.625% */
+    letter-spacing: -0.32px;
+    margin-bottom: 28px;
+  }
+  .item {
+    padding: 16px;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+  .itemIconWrap {
+    width: 47px;
+    height: 47px;
+  }
+  .itemIcon {
+    width: 26px;
+    height: 26px;
+  }
+  .list {
+    grid-template-columns: repeat(auto-fill, minmax(auto, 158px));
+    grid-gap: 12px;
+    max-width: 520px;
+  }
+}

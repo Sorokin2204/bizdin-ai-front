@@ -45,3 +45,12 @@
     text-underline-offset: 4px;
   }
 }
+@media (max-width: 1024px) {
+  .title {
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 40px; /* 200% */
+    letter-spacing: -0.2px;
+  }
+}

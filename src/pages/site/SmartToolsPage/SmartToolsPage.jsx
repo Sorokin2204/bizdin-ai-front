@@ -7,24 +7,44 @@ import clsx from 'clsx';
 import SmartBlockList from '../../../components/site/SmartBlockList/SmartBlockList';
 import Tags from '../../../components/site/Tags/Tags';
 import { useDispatch } from 'react-redux';
-import { setActiveSmartBlock } from '../../../redux/slices/app.slice';
+import { setActiveSmartBlock, setShowLeftMenu, setShowSwipeBottom } from '../../../redux/slices/app.slice';
 import Textarea from '../../../components/site/Textarea/Textarea';
 import { useSelector } from 'react-redux';
+import { useMediaQuery } from '../../../utils/useMediaQuery';
+import HistoryChat from '../../../components/site/HistoryChat/HistoryChat';
 const SmartToolsPage = () => {
   const dispatch = useDispatch();
   const { activeSmartBlock } = useSelector((state) => state.app);
+  const isMobile = useMediaQuery('(max-width: 1024px)');
+  const dataHistory = [
+    {
+      group: 'June',
+      list: ['New analyze', 'New analyze', 'New analyze'],
+    },
+    {
+      group: 'May',
+      list: ['New analyze', 'New analyze', 'New analyze'],
+    },
+    {
+      group: 'September',
+      list: ['New analyze', 'New analyze', 'New analyze'],
+    },
+  ];
   return (
     <>
       <ContentBlock
         leftTitle={'Adding analyze'}
         title={'Smart tools'}
+        leftMenu={<HistoryChat list={dataHistory} />}
         left={
           <>
             <div className={clsx(styles.wrap)}>
-              {' '}
-              <div className={clsx(styles.tagsBox)}>
-                <Tags long list={['Analyze', 'Analyze', 'Analyze', 'Analyze']} />
-              </div>
+              {!isMobile && (
+                <div className={clsx(styles.tagsBox)}>
+                  <Tags long list={['Analyze', 'Analyze', 'Analyze', 'Analyze']} />
+                </div>
+              )}
+
               <SmartBlockList />
             </div>
           </>
@@ -48,9 +68,16 @@ const SmartToolsPage = () => {
           </>
         }
         buttonProps={{
+          inLeftMenu: true,
           icon: '../img/dashboard.svg',
+          leftMenuIcon: '../img/add.svg',
           text: 'Show analyze',
+          leftMenuText: 'Add analyze',
           onClick: () => {},
+          onClickLeftMenu: () => {
+            dispatch(setShowLeftMenu(false));
+            dispatch(setShowSwipeBottom(true));
+          },
         }}
       />
     </>
