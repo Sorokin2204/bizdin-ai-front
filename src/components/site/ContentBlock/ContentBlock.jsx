@@ -8,16 +8,29 @@ import { useSelector } from 'react-redux';
 import { useMediaQuery } from '../../../utils/useMediaQuery';
 import SwipeBottom from '../SwipeBottom/SwipeBottom';
 import MenuLeft from '../MenuLeft/MenuLeft';
+import { setCollapseRightSideBar, setShowTips } from '../../../redux/slices/app.slice';
+import { useDispatch } from 'react-redux';
+import Tips from '../Tips/Tips';
+import { useLocation } from 'react-router';
 const ContentBlock = ({ onAddMobile, leftMenu, left, right, title, leftTitle, buttonProps }) => {
-  const { collapseLeftSideBar } = useSelector((state) => state.app);
+  const { collapseRightSideBar, showTips } = useSelector((state) => state.app);
   const isMobile = useMediaQuery('(max-width: 1024px)');
+  const dispatch = useDispatch();
+  const { pathname } = useLocation();
   return (
     <>
-      <div className={clsx(styles.wrap)}>
+      <div className={clsx(styles.wrap, collapseRightSideBar && styles.wrapCollapseRight)}>
         <div className={clsx(styles.left)}>
           <ContentHead title={title} onAddMobile={onAddMobile} />
           {left}
         </div>
+        {!isMobile && (
+          <div
+            className={clsx(styles.collapseIcon, collapseRightSideBar && styles.collapseIconHide)}
+            onClick={() => {
+              dispatch(setCollapseRightSideBar(!collapseRightSideBar));
+            }}></div>
+        )}
 
         {isMobile ? (
           <>
@@ -42,19 +55,35 @@ const ContentBlock = ({ onAddMobile, leftMenu, left, right, title, leftTitle, bu
             </MenuLeft>
           </>
         ) : (
-          <div className={clsx(styles.right)}>
+          <div className={clsx(styles.right, collapseRightSideBar && styles.rightHide)}>
             <>
               <ContentSideBarHead title={leftTitle} />
 
-              {right}
+              <> {right}</>
               <div className={clsx(styles.btnBox)}>
-                <Button icon={buttonProps.icon} onClick={buttonProps.onClick}>
-                  {buttonProps.text}
-                </Button>
+                <Tips
+                  text={pathname == '/chats' ? 'Here you can craete new chat' : pathname == '/files' ? 'Add a new file' : pathname == '/smart-tools' ? 'Analyze your business' : ''}
+                  style={{ width: '100%' }}
+                  frameStyle={{
+                    top: '2.5px',
+                    left: '2.5px',
+                    width: 'calc(100% - 5px)',
+                    height: 'calc(100% - 5px)',
+                    borderColor: '#fff',
+                  }}>
+                  <Button icon={buttonProps.icon} onClick={buttonProps.onClick} style={{ width: '100%' }}>
+                    {buttonProps.text}
+                  </Button>
+                </Tips>
               </div>
             </>{' '}
           </div>
         )}
+        <div
+          className={clsx(styles.overlay, showTips && styles.overlayActive)}
+          onClick={() => {
+            dispatch(setShowTips(false));
+          }}></div>
       </div>
     </>
   );

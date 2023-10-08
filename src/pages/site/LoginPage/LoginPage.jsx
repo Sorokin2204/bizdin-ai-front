@@ -14,7 +14,7 @@ const LoginPage = () => {
             list={[
               { title: 'Plan your business', image: '../img/slider-1.svg', label: `I'll write you a detailed plan of your business in 5 minutes` },
               { title: 'Consult with specialists', image: '../img/slider-2.svg', label: 'Consult with experts in your field and gain experience in all industries' },
-              ,
+
               { title: 'Explore your files quickly', image: '../img/slider-3.svg', label: 'Study your files quickly and efficiently without any problems' },
             ]}
           />

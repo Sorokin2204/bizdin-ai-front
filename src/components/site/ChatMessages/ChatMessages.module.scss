@@ -41,6 +41,14 @@
   letter-spacing: -0.36px;
   max-width: 553px;
 }
+
+html[data-theme='light'] {
+  .text {
+    background-color: rgba(232, 236, 239, 0.5);
+    border-color: rgba(108, 114, 117, 0.25);
+  }
+}
+
 $dot-width: 10px;
 $dot-color: var(--text-2);
 $speed: 1s;

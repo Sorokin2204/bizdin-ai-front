@@ -5,6 +5,10 @@
   padding: 26.5px 25px 20.5px 24px;
   //   border-bottom: 1px solid var(--border);
   height: 75px;
+  transition: padding 0.3s;
+}
+.wrapRightHide {
+  padding: 26.5px 80px 20.5px 24px;
 }
 .left {
   display: flex;
@@ -26,7 +30,7 @@
   width: 24px;
   height: 24px;
   mask-size: contain;
-  background-color: var(--text);
+  background-color: var(--icon);
   mask-size: contain;
 }
 .burgerWrap {
@@ -94,5 +98,33 @@
     & + & {
       margin-left: 10px;
     }
+  }
+}
+.addDashboard {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: var(--primary-2);
+  margin-left: 10px;
+  position: relative;
+  &::after {
+    content: '';
+    display: block;
+    background-image: url(../../../../public/img/add.svg);
+    width: 20px;
+    height: 20px;
+    background-size: contain;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+@media (max-width: 380px) {
+  .wrap {
+    padding: 10px 14px 8px 14px;
+  }
+  .burgerWrap {
+    width: auto;
   }
 }

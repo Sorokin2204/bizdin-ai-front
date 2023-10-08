@@ -1,6 +1,7 @@
 .wrap {
   display: grid;
   grid-template-columns: 70% 30%;
+  height: 100vh;
 }
 .left {
   background-color: var(--bg-1);
@@ -38,7 +39,8 @@
   letter-spacing: -0.4px;
   &:first-child {
     &::after {
-      content: ' |  ';
+      content: ' |';
+      margin-right: 4px;
     }
   }
 }

@@ -14,9 +14,10 @@
     display: block;
     width: 24px;
     height: 24px;
-    mask-image: url(../../../../public/img/logo-icon.svg);
-    background-color: var(--text);
-    mask-size: contain;
+    background-image: var(--logo-icon);
+    // background-color: var(--text);
+    background-size: contain;
+    background-repeat: no-repeat;
     margin-right: 6px;
   }
   & .logoLabel {
@@ -34,7 +35,7 @@
   width: 32px;
   height: 32px;
   mask-image: url(../../../../public/img/on.svg);
-  background-color: var(--text);
+  background-color: var(--icon);
   background-size: contain;
   position: absolute;
   top: 0;
@@ -85,6 +86,12 @@
 .themeDark {
   &::after {
     left: 124px;
+  }
+  .themeItem:nth-child(2) {
+    color: #ccd2e3;
+    & .themeIcon {
+      background-color: #e0e0e0 !important;
+    }
   }
 }
 .themeLabel {
@@ -212,7 +219,7 @@
     mask-image: url(../../../../public/img/expand.svg);
     width: 24px;
     height: 24px;
-    background-color: var(--icon);
+    background-color: #33363f;
     margin-right: 20px;
     margin-left: 16px;
     transition: all 0.3s;

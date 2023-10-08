@@ -1,0 +1,7 @@
+import React from 'react';
+import styles from './Overlay.module.scss';
+const Overlay = () => {
+  return <></>;
+};
+
+export default Overlay;

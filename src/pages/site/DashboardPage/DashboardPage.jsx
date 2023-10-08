@@ -6,6 +6,7 @@ import Switch from '../../../components/site/Switch/Switch';
 import Textarea from '../../../components/site/Textarea/Textarea';
 import clsx from 'clsx';
 import Chart from '../../../components/site/Chart/Chart';
+import Tips from '../../../components/site/Tips/Tips';
 const DashboardPage = () => {
   return (
     <>
@@ -20,8 +21,9 @@ const DashboardPage = () => {
               <Select value={'Purple'} onChange={(opt) => {}} label={'Color of chart'} list={['Purple', 'Green', 'Blue', 'Yellow', 'Pink', 'Orange', 'Red']} />
             </div>
             <div className={clsx(styles.line)}>
-              {' '}
-              <Select value={'Bar chart'} onChange={(opt) => {}} label={'Make any tweaks to the chart'} list={['Bar chart', 'Area Chart', 'Line Chart', 'Composed chart', 'Pie Chart', 'Scatter Chart', 'Radar Chart', 'Radial Chart', 'Treemap Chart', 'Funnel Chart']} />
+              <Tips text={'Choose chart'}>
+                <Select value={'Bar chart'} onChange={(opt) => {}} label={'Make any tweaks to the chart'} list={['Bar chart', 'Area Chart', 'Line Chart', 'Composed chart', 'Pie Chart', 'Scatter Chart', 'Radar Chart', 'Radial Chart', 'Treemap Chart', 'Funnel Chart']} />
+              </Tips>
             </div>
             <div className={clsx(styles.line)}>
               {' '}
@@ -38,7 +40,9 @@ const DashboardPage = () => {
             </div>
             <div className={clsx(styles.line)}>
               {' '}
-              <Textarea label={'What would you like to visualize?'} placeholder="Show me a bar chart with COVID-19 cases in London in Mrach 2020..." />
+              <Tips text={'Write here your question'}>
+                <Textarea label={'What would you like to visualize?'} placeholder="Show me a bar chart with COVID-19 cases in London in Mrach 2020..." />
+              </Tips>
             </div>
           </div>
         }

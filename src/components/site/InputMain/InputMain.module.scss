@@ -8,6 +8,17 @@
 
   transition: all 0.3s;
 }
+
+html[data-theme='light'] {
+  .wrap {
+    background-color: var(--bg-1);
+    border: 1px solid var(--grey-light);
+  }
+  .label {
+    color: var(--grey-light) !important;
+  }
+}
+
 .icon {
   min-width: 20px;
   height: 20px;
@@ -47,6 +58,7 @@
   border: 1px solid var(--text);
   background-color: transparent;
   & .input {
+    font-family: 'Montserrat' !important;
     font-size: 24px;
     font-style: normal;
     font-weight: 400;

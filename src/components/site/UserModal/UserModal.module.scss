@@ -4,7 +4,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 1040;
+  z-index: 104000000;
   width: 100vw;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.4);
@@ -22,7 +22,7 @@
   opacity: 1 !important;
 }
 .modal {
-  z-index: 1100;
+  z-index: 110000000;
   display: grid;
   grid-template-columns: 212px 1fr;
   column-gap: 48px;

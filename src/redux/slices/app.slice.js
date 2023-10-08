@@ -12,6 +12,7 @@ export const initialState = {
   showSwipeBottom: false,
   showLeftMenu: false,
   showStepModal: false,
+  showTips: false,
 };
 
 export const appSlice = createSlice({
@@ -51,8 +52,11 @@ export const appSlice = createSlice({
     setShowStepModal(state, action) {
       state.showStepModal = action.payload;
     },
+    setShowTips(state, action) {
+      state.showTips = action.payload;
+    },
   },
   extraReducers: {},
 });
-export const { setTheme, setActiveSmartBlock, setActiveSmartView, setShowUserModal, setActiveSettingOption, setActiveLang, setCollapseLeftSideBar, setCollapseRightSideBar, setShowSwipeBottom, setShowLeftMenu, setShowStepModal } = appSlice.actions;
+export const { setTheme, setActiveSmartBlock, setActiveSmartView, setShowUserModal, setActiveSettingOption, setActiveLang, setCollapseLeftSideBar, setCollapseRightSideBar, setShowSwipeBottom, setShowLeftMenu, setShowStepModal, setShowTips } = appSlice.actions;
 export const appReducer = appSlice.reducer;

@@ -6,19 +6,20 @@
   //   border-bottom: 1px solid var(--border);
   height: 75px;
 }
+.wrapHide {
+  .icon {
+  }
+  .title {
+    visibility: hidden;
+    opacity: 0;
+  }
+}
 .title {
+  padding-right: 42px;
+  transition: all 0.3s;
   color: var(--text);
   font-size: 24px;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
-}
-.icon {
-  width: 32px;
-  height: 32px;
-  min-width: 32px;
-  min-height: 32px;
-  background-color: var(--text);
-  mask-size: contain;
-  mask-image: url(../../../../public/img/on.svg);
 }

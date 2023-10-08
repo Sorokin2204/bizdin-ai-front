@@ -1,10 +1,19 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './Select.module.scss';
 import clsx from 'clsx';
+import { useSelector } from 'react-redux';
 const Select = ({ label, list, multi, onChange, styleInput, type2, value }) => {
   const [activeOptions, setActiveOptions] = useState([]);
   const [show, setShow] = useState(false);
   const [activeOption, setActiveOption] = useState(null);
+  const { showTips } = useSelector((state) => state.app);
+
+  useEffect(() => {
+    if (showTips) {
+      setShow(false);
+    }
+  }, [showTips]);
+
   return (
     <>
       <div className={clsx(styles.label)}>{label}</div>

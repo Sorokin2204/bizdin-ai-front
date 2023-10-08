@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styles from './SideBar.module.scss';
 import clsx from 'clsx';
 import AnimateHeight from 'react-animate-height';
@@ -53,6 +53,13 @@ const SideBar = () => {
   const nodeRef = useRef(null);
 
   const { collapseLeftSideBar } = useSelector((state) => state.app);
+  useEffect(() => {
+    if (theme) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    } else {
+      document.documentElement.setAttribute('data-theme', 'light');
+    }
+  }, [theme]);
 
   const dataChat = [
     { color: '#33363F', label: 'Hello world' },
@@ -78,6 +85,7 @@ const SideBar = () => {
         break;
     }
   };
+
   return (
     <>
       <div className={clsx(styles.wrap, collapseLeftSideBar && styles.wrapCollapse)}>

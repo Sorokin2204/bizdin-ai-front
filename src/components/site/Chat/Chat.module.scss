@@ -27,6 +27,7 @@
   mask-size: contain;
 }
 .input {
+  min-width: 0;
   padding: 0;
   background-color: transparent;
   border: none;
@@ -47,6 +48,11 @@
   mask-image: url(../../../../public/img/atom.svg);
   background-color: var(--text);
   mask-size: contain;
+}
+html[data-theme='light'] {
+  .atom {
+    background-color: var(--primary-2);
+  }
 }
 @media (max-width: 1024px) {
   .wrap {
@@ -74,5 +80,10 @@
     z-index: 1000000;
     position: relative;
     padding: 8px 20px;
+  }
+}
+html[data-theme='light'] {
+  .inputBlock {
+    background-color: var(--bg-3);
   }
 }

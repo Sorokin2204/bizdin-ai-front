@@ -32,6 +32,7 @@
   margin-bottom: 70px;
 }
 .list {
+  max-width: 800px;
   display: grid;
   align-items: center;
   justify-content: center;
@@ -61,6 +62,11 @@
     .itemIcon {
       transform: scale(1.2);
     }
+  }
+}
+html[data-theme='light'] {
+  .itemWhite {
+    border: 1px solid var(--grey-light);
   }
 }
 .itemWhite {

@@ -9,7 +9,11 @@
 .itemActive {
   background-color: var(--bg-1);
 }
-
+html[data-theme='light'] {
+  .itemActive {
+    background-color: rgba(173, 0, 255, 0.2);
+  }
+}
 @media (max-width: 1024px) {
   .itemActive {
     background-color: var(--bg-3);

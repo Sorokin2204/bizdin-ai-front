@@ -3,13 +3,20 @@ import styles from './FileSideBar.module.scss';
 import Tags from '../Tags/Tags';
 import clsx from 'clsx';
 import { useMediaQuery } from '../../../utils/useMediaQuery';
+import Tips from '../Tips/Tips';
 const FileSideBar = () => {
   const list = ['File 2', 'File 2', 'File 2'];
   const isMobile = useMediaQuery('(max-width: 1024px)');
   return (
     <>
       <div className={clsx(styles.wrap)}>
-        <div className={clsx(styles.tags)}>{!isMobile && <Tags list={list} />}</div>
+        <div className={clsx(styles.tags)}>
+          {!isMobile && (
+            <Tips frameStyle={{ borderRadius: '24px' }} text="Find your file here" bottom>
+              <Tags list={list} />
+            </Tips>
+          )}
+        </div>
 
         <div className={clsx(styles.imgList)}>
           {' '}

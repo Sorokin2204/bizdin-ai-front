@@ -39,3 +39,8 @@
     visibility: visible;
   }
 }
+html[data-theme='light'] {
+  .label {
+    color: var(--grey-light);
+  }
+}
