@@ -4,6 +4,7 @@ import Tags from '../Tags/Tags';
 import clsx from 'clsx';
 import { useMediaQuery } from '../../../utils/useMediaQuery';
 import Tips from '../Tips/Tips';
+import Select from '../Select/Select';
 const FileSideBar = () => {
   const list = ['File 2', 'File 2', 'File 2'];
   const isMobile = useMediaQuery('(max-width: 1024px)');
@@ -12,9 +13,13 @@ const FileSideBar = () => {
       <div className={clsx(styles.wrap)}>
         <div className={clsx(styles.tags)}>
           {!isMobile && (
-            <Tips frameStyle={{ borderRadius: '24px' }} text="Find your file here" bottom>
-              <Tags list={list} />
+            <Tips text="Find your file here" bottom>
+              <Select value={'File 1'} onChange={(opt) => {}} list={['File 1', 'File 2', 'File 3', 'File 4', 'File 5']} />
             </Tips>
+
+            // <Tips frameStyle={{ borderRadius: '24px' }} text="Find your file here" bottom>
+            //   <Tags list={list} />
+            // </Tips>
           )}
         </div>
 

@@ -9,6 +9,11 @@
   padding-bottom: 18px;
   z-index: 1000;
 }
+html[data-theme='light'] {
+  .wrap {
+    border-top-color: rgba(108, 114, 117, 0.25);
+  }
+}
 .list {
   display: flex;
   align-items: center;

@@ -30,7 +30,6 @@ const Chat = () => {
         setListMessage([
           ...list,
           {
-            avatar: '../img/logo-icon.svg',
             self: false,
             text: dt.data[0],
           },

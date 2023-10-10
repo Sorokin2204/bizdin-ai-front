@@ -16,7 +16,7 @@ const Select = ({ label, list, multi, onChange, styleInput, type2, value }) => {
 
   return (
     <>
-      <div className={clsx(styles.label)}>{label}</div>
+      {label && <div className={clsx(styles.label)}>{label}</div>}
       <div className={clsx(styles.wrap, type2 && styles.wrapType2)}>
         <div
           className={clsx(type2 && styles.inputType2, styles.input, show && styles.inputActive)}

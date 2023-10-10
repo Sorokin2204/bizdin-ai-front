@@ -19,12 +19,12 @@ const BrainstormingPage = () => {
         left={<Chat />}
         leftMenu={<HistoryChat />}
         right={
-          <>
+          <div>
             <div className={clsx(styles.selectBox, isMobile && styles.selectBoxMobile)}>
               <Select multi label={'Choose your specialist'} list={['Designer', 'Developer', 'Finansist', 'Marketologue', 'SMM Specialist']} />
             </div>
             {!isMobile && <HistoryChat />}
-          </>
+          </div>
         }
         buttonProps={{
           inLeftMenu: true,

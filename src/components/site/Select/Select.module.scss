@@ -37,6 +37,7 @@
   border: 1px solid var(--bg-4);
   height: 54px;
   position: relative;
+  background-color: var(--bg-3);
   &::after {
     content: '';
     display: block;
@@ -125,6 +126,15 @@ html[data-theme='light'] {
   letter-spacing: -0.28px;
   &::after {
     right: 12px;
+  }
+}
+html[data-theme='light'] {
+  .inputType2 {
+    background-color: var(--bg-1);
+    border-color: var(--grey-light);
+    &::after {
+      background-color: var(--text);
+    }
   }
 }
 @media (max-width: 1024px) {

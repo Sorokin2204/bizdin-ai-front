@@ -17,6 +17,9 @@ html[data-theme='light'] {
   .label {
     color: var(--grey-light) !important;
   }
+  .input {
+    color: var(--grey-text);
+  }
 }
 
 .icon {

@@ -11,6 +11,11 @@ html[data-theme='light'] {
   .label {
     color: var(--grey-light);
   }
+  .btn {
+    border-color: var(--primary-2);
+    color: var(--primary-2);
+    font-weight: 600;
+  }
 }
 .wrap {
   display: flex;

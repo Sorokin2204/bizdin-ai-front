@@ -25,6 +25,11 @@
   line-height: 32px; /* 177.778% */
   letter-spacing: -0.36px;
 }
+html[data-theme='light'] {
+  .head {
+    border-bottom-color: rgba(108, 114, 117, 0.25);
+  }
+}
 @media (max-width: 1024px) {
   .title {
     font-size: 20px;
