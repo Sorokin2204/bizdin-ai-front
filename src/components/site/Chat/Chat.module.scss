@@ -43,12 +43,14 @@
   color: var(--text);
 }
 .atom {
+  cursor: pointer;
   width: 24px;
   height: 24px;
-  mask-image: url(../../../../public/img/atom.svg);
+  mask-image: url(../../../../public/img/send.svg);
   background-color: var(--text);
   mask-size: contain;
 }
+
 html[data-theme='light'] {
   .atom {
     background-color: var(--primary-2);

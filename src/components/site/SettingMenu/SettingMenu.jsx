@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styles from './SettingMenu.module.scss';
 import clsx from 'clsx';
 import { useSelector } from 'react-redux';
@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 import { setActiveSettingOption } from '../../../redux/slices/app.slice';
 import { useMediaQuery } from '../../../utils/useMediaQuery';
 const SettingMenu = () => {
-  const { activeSettingOption } = useSelector((state) => state.app);
+  const { activeSettingOption, theme } = useSelector((state) => state.app);
   const dispatch = useDispatch();
   const isMobile = useMediaQuery('(max-width: 1024px)');
   const data = [
@@ -18,18 +18,18 @@ const SettingMenu = () => {
       icon: './img/password.svg',
       label: 'Password',
     },
-    {
-      icon: './img/bell.svg',
-      label: 'Notifications',
-    },
+    // {
+    //   icon: './img/bell.svg',
+    //   label: 'Notifications',
+    // },
     {
       icon: './img/setting-2.svg',
       label: 'General',
     },
-    {
-      icon: './img/database.svg',
-      label: 'Data controls',
-    },
+    // {
+    //   icon: './img/database.svg',
+    //   label: 'Data controls',
+    // },
     {
       icon: './img/data.svg',
       label: 'Data source',
@@ -40,10 +40,11 @@ const SettingMenu = () => {
       label: 'Delete account',
     },
   ];
+
   return (
     <>
       <div className={clsx(styles.list)}>
-        {!isMobile && <div className={clsx(styles.itemActiveBorder, activeSettingOption == 'Delete account' && styles.itemActiveBorderDelete)} style={{ top: `${(activeSettingOption == 'Delete account' ? 47.3 : 40 + 4) * data?.findIndex((item) => item?.label == activeSettingOption) + 1}px` }}></div>}
+        {!isMobile && <div className={clsx(styles.itemActiveBorder, activeSettingOption == 'Delete account' && styles.itemActiveBorderDelete)} style={{ top: `${(activeSettingOption == 'Delete account' ? 48.9 : 40 + 4) * data?.findIndex((item) => item?.label == activeSettingOption) + 1}px` }}></div>}
 
         {data?.map((item) => (
           <>

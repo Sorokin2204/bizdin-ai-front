@@ -5,7 +5,7 @@ import SettingAvatar from '../SettingAvatar/SettingAvatar';
 const SettingMobHome = () => {
   return (
     <>
-      <SettingAvatar />
+      {/* <SettingAvatar /> */}
       <SettingMenu />
     </>
   );

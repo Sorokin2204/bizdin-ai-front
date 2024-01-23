@@ -29,7 +29,7 @@ const MenuLeft = ({ children, button }) => {
           <div className={clsx(styles.box, button && styles.boxWithBtn)}> {children}</div>{' '}
           <div className={clsx(styles.profile)}>
             <div className={clsx(styles.profileWrap)}>
-              <img src="https://i.pravatar.cc/36" alt="" className={clsx(styles.avatar)} />
+              <div alt="" className={clsx(styles.avatar)}></div>
               <div className={clsx(styles.name)}>Ulday Turganbayeva</div>
             </div>
 

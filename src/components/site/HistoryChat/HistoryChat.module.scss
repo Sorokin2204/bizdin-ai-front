@@ -19,12 +19,21 @@ html[data-theme='light'] {
     background-color: var(--bg-3);
   }
 }
-
+.itemSmall {
+  // font-size: 13px !important;
+}
 .item {
+  & div {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
   user-select: none;
   cursor: pointer;
   border-radius: 12px;
-  display: flex;
+  display: grid;
+  grid-template-columns: 24px 1fr;
   align-items: center;
   padding: 15px 8px;
   color: var(--text);
@@ -34,6 +43,7 @@ html[data-theme='light'] {
   line-height: 24px; /* 150% */
   letter-spacing: -0.32px;
   transition: background-color 0.3s;
+  column-gap: 10px;
   &::before {
     content: '';
     display: block;
@@ -41,13 +51,13 @@ html[data-theme='light'] {
     background-color: var(--text);
     width: 24px;
     height: 24px;
-    margin-right: 10px;
   }
 }
 
 .group {
   color: var(--grey-text);
   font-size: 16px;
+  text-transform: capitalize;
   font-style: normal;
   font-weight: 500;
   line-height: 24px;

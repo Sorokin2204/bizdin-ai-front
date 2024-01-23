@@ -8,6 +8,9 @@ import { setCollapseLeftSideBar, setShowUserModal, setTheme } from '../../../red
 import { CSSTransition } from 'react-transition-group';
 import { useSelector } from 'react-redux';
 import { useMediaQuery } from '../../../utils/useMediaQuery';
+import { groupChatByMonth } from '../../../utils/groupChatByMonth';
+import randomColor from 'randomcolor';
+import { setActiveConversation } from '../../../redux/slices/chat.slice';
 export const dataMenu = [
   {
     icon: './img/dashboard.svg',
@@ -52,14 +55,9 @@ const SideBar = () => {
   const nodeRef = useRef(null);
 
   const { collapseLeftSideBar, theme } = useSelector((state) => state.app);
-  useEffect(() => {
-    if (theme) {
-      document.documentElement.setAttribute('data-theme', 'dark');
-    } else {
-      document.documentElement.setAttribute('data-theme', 'light');
-    }
-  }, [theme]);
-
+  const {
+    userAuth: { data: userData },
+  } = useSelector((state) => state.user);
   const dataChat = [
     { color: '#33363F', label: 'Hello world' },
     { color: '#EE786C', label: 'Top 10 countries in ...' },
@@ -84,7 +82,17 @@ const SideBar = () => {
         break;
     }
   };
+  const [listChat, setListChat] = useState([]);
 
+  const {
+    chatGetList: { data: chatGetListData },
+  } = useSelector((state) => state.chat);
+  useEffect(() => {
+    if (chatGetListData?.length >= 1) {
+      setListChat(chatGetListData?.filter((item) => item?.favorite)?.map((item) => ({ id: item?.id, label: item?.topic, favorite: item?.favorite, color: randomColor() })));
+    }
+  }, [chatGetListData]);
+  console.log(listChat);
   return (
     <>
       <div className={clsx(styles.wrap, collapseLeftSideBar && styles.wrapCollapse)}>
@@ -103,7 +111,7 @@ const SideBar = () => {
         </div>
         <div className={clsx(styles.content)}>
           {' '}
-          <div className={clsx(styles.theme, theme && styles.themeDark, collapseLeftSideBar && styles.themeCollapse)}>
+          {/* <div className={clsx(styles.theme, theme && styles.themeDark, collapseLeftSideBar && styles.themeCollapse)}>
             <div
               className={clsx(styles.themeItem)}
               onClick={() => {
@@ -121,7 +129,7 @@ const SideBar = () => {
               <div className={clsx(styles.themeIcon)}></div>
               <div className={clsx(styles.themeLabel)}>Dark</div>
             </div>
-          </div>
+          </div> */}
           <div className={clsx(styles.menu)}>
             <div className={clsx(styles.menuActive)} style={{ top: `${56 * getIndexByPathName(pathname) + 1}px` }}></div>
             {dataMenu?.map((item, itemIndex) => (
@@ -136,10 +144,16 @@ const SideBar = () => {
           </div>
           <AnimateHeight duration={500} height={height}>
             <div className={clsx(styles.chats)}>
-              {dataChat?.map((itemChat) => (
-                <div className={clsx(styles.chatItem)}>
+              {listChat?.map((itemChat) => (
+                <div
+                  className={clsx(styles.chatItem)}
+                  onClick={() => {
+                    if (itemChat?.id) {
+                      dispatch(setActiveConversation(itemChat));
+                    }
+                  }}>
                   <div className={clsx(styles.chatColor)} style={{ backgroundColor: itemChat?.color }}></div>
-                  <div className={clsx(styles.chatLabel)}> {itemChat?.label}</div>
+                  <div className={clsx(styles.chatLabel)}> {itemChat?.label ?? 'Безымяный'}</div>
                 </div>
               ))}
             </div>
@@ -147,9 +161,9 @@ const SideBar = () => {
         </div>
         <div className={clsx(styles.profile)}>
           <div className={clsx(styles.profileWrap)}>
-            <img src="https://i.pravatar.cc/36" alt="" className={clsx(styles.avatar)} />
+            <div alt="" className={clsx(styles.avatar)}></div>
             <div ref={nodeRef} className={clsx(styles.name)}>
-              Ulday Turganbayeva
+              {userData?.username}
             </div>
           </div>
 

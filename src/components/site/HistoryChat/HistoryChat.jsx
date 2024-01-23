@@ -4,6 +4,8 @@ import clsx from 'clsx';
 import { useSelector } from 'react-redux';
 import Tips from '../Tips/Tips';
 import { useLocation } from 'react-router';
+import { useDispatch } from 'react-redux';
+import { setActiveConversation } from '../../../redux/slices/chat.slice';
 const dataHistory = [
   {
     group: 'June',
@@ -18,9 +20,9 @@ const dataHistory = [
     list: ['New chat', 'New chat', 'New chat'],
   },
 ];
-
 const HistoryChat = ({ list = dataHistory }) => {
-  const [active, setActive] = useState(null);
+  const dispatch = useDispatch();
+  const { activeConversation } = useSelector((state) => state.chat);
   const { pathname } = useLocation();
   return (
     <>
@@ -29,23 +31,28 @@ const HistoryChat = ({ list = dataHistory }) => {
           <>
             <div className={clsx(styles.group)}>{itemHistory?.group}</div>
             {itemHistory?.list?.map((item, indexItem) =>
-              itemHistory?.group == 'June' && indexItem == 0 && pathname == '/chats' ? (
+              indexItem == 0 && pathname == '/chats' ? (
                 <Tips text={'Click Chats to talk to our AI'} style={{ height: 'auto' }} frameStyle={{ borderRadius: '12px' }} bottom>
                   <div
-                    className={clsx(styles.item, active?.group == indexHistory && active?.item == indexItem && styles.itemActive)}
+                    className={clsx(styles.item, activeConversation?.id == item?.id && styles.itemActive)}
                     onClick={() => {
-                      setActive({ group: indexHistory, item: indexItem });
+                      if (item?.id) {
+                        dispatch(setActiveConversation(item));
+                      }
                     }}>
-                    {item}
+                    <div> {item?.label || 'Безымянный'}</div>
                   </div>
                 </Tips>
               ) : (
                 <div
-                  className={clsx(styles.item, active?.group == indexHistory && active?.item == indexItem && styles.itemActive)}
+                  className={clsx(styles.item, activeConversation?.id == item?.id && styles.itemActive, item?.label?.length >= 14 && styles.itemSmall)}
                   onClick={() => {
-                    setActive({ group: indexHistory, item: indexItem });
+                    if (item?.id) {
+                      dispatch(setActiveConversation(item));
+                    }
+                    // setActive({ group: indexHistory, item: indexItem });
                   }}>
-                  {item}
+                  <div>{item?.label || 'Безымянный'}</div>
                 </div>
               ),
             )}

@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import styles from './InputMain.module.scss';
 import clsx from 'clsx';
-const InputMain = ({ icon, label, placeholder, helper, type2 }) => {
+import { Logger } from 'sass';
+const InputMain = ({ icon, label, placeholder, helper, type2, form, name, rules = { required: true } }) => {
   const [active, setActive] = useState(false);
   const [value, setValue] = useState('');
+  const error = form?.formState?.errors?.[name]?.message;
+
   return (
     <>
       <div className={clsx(styles.label, type2 && styles.labelType2)}>{label}</div>
@@ -23,9 +26,11 @@ const InputMain = ({ icon, label, placeholder, helper, type2 }) => {
           type="text"
           placeholder={placeholder}
           className={clsx(styles.input)}
+          {...form?.register(name, rules)}
         />
       </div>
       {helper && <div className={clsx(styles.helper)}>{helper}</div>}
+      {error && <div className={clsx(styles.helper, styles.error)}>{error}</div>}
     </>
   );
 };

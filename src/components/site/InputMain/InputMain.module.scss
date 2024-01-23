@@ -56,13 +56,13 @@ html[data-theme='light'] {
 }
 .wrapInput2 {
   border-radius: 7px;
-  padding: 8px 16px;
-  height: 70px;
+  padding: 6px 12px;
+  height: 60px;
   border: 1px solid var(--text);
   background-color: transparent;
   & .input {
     font-family: 'Montserrat' !important;
-    font-size: 24px;
+    font-size: 20px;
     font-style: normal;
     font-weight: 400;
     line-height: 24px; /* 100% */
@@ -83,13 +83,13 @@ html[data-theme='light'] {
   margin-bottom: 8px;
 }
 .labelType2 {
-  font-size: 24px;
+  font-size: 20px;
   font-style: normal;
   font-weight: 600;
   line-height: 24px; /* 100% */
   letter-spacing: -0.48px;
-  margin-bottom: 20px;
-  margin-top: 48px;
+  margin-bottom: 10px;
+  margin-top: 40px;
 }
 .helper {
   margin-top: 8px;
@@ -99,6 +99,9 @@ html[data-theme='light'] {
   line-height: 24px; /* 171.429% */
   letter-spacing: -0.14px;
   color: var(--grey-text-opacity);
+}
+.error {
+  color: #eb5757;
 }
 
 @media (max-width: 1024px) {

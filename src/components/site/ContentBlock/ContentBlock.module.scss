@@ -33,6 +33,7 @@ html[data-theme='light'] {
   grid-template-columns: 100% 0%;
 }
 .left {
+  overflow: hidden;
   display: grid;
   grid-template-rows: 75px 1fr;
   height: calc(100vh - var(--nav-h));

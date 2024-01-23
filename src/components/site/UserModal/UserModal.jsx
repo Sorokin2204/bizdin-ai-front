@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styles from './UserModal.module.scss';
 import { useSelector } from 'react-redux';
 import clsx from 'clsx';
@@ -14,10 +14,18 @@ import SettingDataSource from '../SettingDataSource/SettingDataSource';
 import SettingDelete from '../SettingDelete/SettingDelete';
 import { useMediaQuery } from '../../../utils/useMediaQuery';
 import SettingMobHome from '../SettingMobHome/SettingMobHome';
+import { ToastContainer } from 'react-toastify';
 const UserModal = () => {
-  const { showUserModal, activeSettingOption } = useSelector((state) => state.app);
+  const { showUserModal, activeSettingOption, theme } = useSelector((state) => state.app);
   const dispatch = useDispatch();
   const isMobile = useMediaQuery('(max-width: 1024px)');
+  useEffect(() => {
+    if (theme) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    } else {
+      document.documentElement.setAttribute('data-theme', 'light');
+    }
+  }, [theme]);
   return (
     <>
       <div

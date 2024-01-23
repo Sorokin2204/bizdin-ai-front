@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 export const initialState = {
-  theme: 'dark',
+  theme: 1,
   activeSmartBlock: 'SWOT',
   activeSmartView: 'grid',
   showUserModal: false,

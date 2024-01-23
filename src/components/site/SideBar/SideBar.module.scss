@@ -265,6 +265,10 @@
 .chatLabel {
   white-space: nowrap;
   transition: all 0.3s;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  user-select: none;
+  cursor: pointer;
 }
 .profile {
   bottom: 0;
@@ -289,8 +293,25 @@
   transition: all 0.3s;
   width: 36px;
   height: 36px;
-  border-radius: 36px;
-  margin-right: 10px;
+  // background-color: var(--bg-3);
+  border-radius: 50%;
+  margin-right: 5px;
+  position: relative;
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    mask-image: url(../../../../public/img/account.svg);
+    mask-size: contain;
+    mask-repeat: no-repeat;
+    background-color: var(--text);
+    opacity: 0.2;
+  }
 }
 .name {
   white-space: nowrap;

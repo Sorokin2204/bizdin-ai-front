@@ -87,8 +87,25 @@
   transition: all 0.3s;
   width: 24px;
   height: 24px;
-  border-radius: 36px;
-  margin-right: 10px;
+  background-color: var(--bg-3);
+  border-radius: 50%;
+  margin-right: 5px;
+  position: relative;
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    mask-image: url(../../../../public/img/account.svg);
+    mask-size: contain;
+    mask-repeat: no-repeat;
+    background-color: var(--text);
+    opacity: 0.2;
+  }
 }
 .name {
   white-space: nowrap;
@@ -111,4 +128,9 @@
   min-height: 24px;
   margin-left: auto;
   transition: all 0.3s;
+}
+@media (max-width: 1024px) {
+  .content {
+    max-width: 300px;
+  }
 }

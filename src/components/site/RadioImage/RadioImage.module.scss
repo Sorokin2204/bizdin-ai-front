@@ -1,5 +1,14 @@
 .wrap {
 }
+
+.wrapLight {
+  & .itemActive .itemName {
+    color: var(--text-2) !important;
+  }
+  & .item .itemName {
+    color: var(--grey-light);
+  }
+}
 .label {
   font-size: 16px;
   font-style: normal;

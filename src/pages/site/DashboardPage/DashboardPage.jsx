@@ -14,7 +14,11 @@ const DashboardPage = () => {
       <ContentBlock
         leftTitle={'Add a new chart'}
         title={'Dashboard'}
-        left={<>{/* <Chart /> */}</>}
+        left={
+          <>
+            <Chart />{' '}
+          </>
+        }
         right={
           <div className={clsx(styles.wrap)}>
             <div className={clsx(styles.line)}>
